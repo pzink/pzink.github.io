@@ -2,7 +2,7 @@
 #set -x
 
 #take photo, save
-gphoto2 --capture-image-and-download --force-overwrite --folder=/Pictures --filename=surfcam-image.jpg 
+#gphoto2 --capture-image-and-download --force-overwrite --folder=/Pictures --filename=surfcam-image.jpg 
 
 # Define variables
 REPO_PATH="/Users/pz/Library/Mobile Documents/com~apple~CloudDocs/Development/pzink.pithub.io Site/pzink.github.io/"
@@ -12,10 +12,6 @@ BRANCH_NAME="main" # Or your target branch
 
 # Ensure the remote uses SSH (replace with your actual repo)
 git remote set-url origin git@github.com:pzink/pzink.github.io.git
-
-# Start the SSH agent and add your key (if not already running)
-eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/id_ed25519 # Use your actual private key path if different
 
 # Navigate to the repository
 cd "$REPO_PATH"
