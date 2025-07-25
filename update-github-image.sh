@@ -1,5 +1,8 @@
 #!/bin/bash
-set -x
+#set -x
+
+#take photo, save
+gphoto2 --capture-image-and-download --force-overwrite --folder=/Pictures --filename=surfcam-image.jpg 
 
 # Define variables
 REPO_PATH="/Users/pz/Library/Mobile Documents/com~apple~CloudDocs/Development/pzink.pithub.io Site/pzink.github.io/"
