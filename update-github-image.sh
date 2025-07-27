@@ -5,7 +5,7 @@ set -x
 imagesnap -d BRIO -w 1 surfcam-image.jpg
 imagesnap -d USB -w 1 ocean-image.jpg
 
-# Define variables
+# Define variables for each cam
 REPO_PATH="/Users/pz/Library/Mobile Documents/com~apple~CloudDocs/Development/pzink.pithub.io Site/pzink.github.io/"
 IMAGE_PATH="/Users/pz/Library/Mobile Documents/com~apple~CloudDocs/Development/pzink.pithub.io Site/pzink.github.io/surfcam-image.jpg"
 IMAGE2_PATH="/Users/pz/Library/Mobile Documents/com~apple~CloudDocs/Development/pzink.pithub.io Site/pzink.github.io/ocean-image.jpg"
