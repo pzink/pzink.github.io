@@ -18,7 +18,7 @@ cd "$REPO_PATH"
 
 # Set Git user name and email
 git config user.name "pz"
-git config user.email "surflikeyoda@gmail.com"
+git config user.email "peterazink@gmail.com"
 
 # Copy or move the new image into the repository
 cp "$IMAGE_PATH" "./surfcam-image.jpg" # Example: Copy to an 'images' folder
