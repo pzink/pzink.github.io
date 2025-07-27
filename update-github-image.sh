@@ -5,6 +5,8 @@ set -x
 imagesnap -d BRIO -w 1 surfcam-image.jpg
 imagesnap -d USB -w 1 ocean-image.jpg
 
+sips ocean-image.jpg -o ocean-image.jpg --cropOffset 250 0 -c 350 1280
+
 # Define variables for each cam
 REPO_PATH="/Users/pz/Library/Mobile Documents/com~apple~CloudDocs/Development/pzink.pithub.io Site/pzink.github.io/"
 IMAGE_PATH="/Users/pz/Library/Mobile Documents/com~apple~CloudDocs/Development/pzink.pithub.io Site/pzink.github.io/surfcam-image.jpg"
