@@ -2,8 +2,8 @@
 set -x
 
 #take photo
-/usr/local/Cellar/imagesnap/0.2.16/bin/imagesnap -d BRIO -w 1 surfcam-image.jpg
-/usr/local/Cellar/imagesnap/0.2.16/bin/imagesnap -d USB -w 1 ocean-image.jpg
+/usr/local/bin/imagesnap -d BRIO -w 0 surfcam-image.jpg
+/usr/local/Cellar/imagesnap/0.2.16/bin/imagesnap -d USB -w 0 ocean-image.jpg
 
 sips ocean-image.jpg -o ocean-image.jpg --cropOffset 250 0 -c 350 1280
 
