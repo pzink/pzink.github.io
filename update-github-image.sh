@@ -17,7 +17,7 @@ cd "$REPO_PATH"
 echo $PATH
 
 #take photo
-/usr/local/bin/imagesnap -d BRIO -w 0 surfcam-image.jpg
+/usr/local/bin/imagesnap -d BRIO -w 0 surfcam-image.jpg 2>&1 >> ./imagesnap_cron.log
 /usr/local/bin/imagesnap -d USB -w 0 ocean-image.jpg
 
 sips ocean-image.jpg -o ocean-image.jpg --cropOffset 250 0 -c 350 1280
@@ -36,6 +36,10 @@ git config user.email "peterazink@gmail.com"
 # Add the image file to staging
 git add "./surfcam-image.jpg"
 git add "./ocean-image.jpg"
+
+# remove images
+rm "./surfcam-image.jpg" 
+rm "./ocean-image.jpg"
 
 # Commit the changes
 git commit -m "$COMMIT_MESSAGE"
