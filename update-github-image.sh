@@ -1,6 +1,8 @@
 #!/bin/bash
 set -x
 
+export DISPLAY=:0
+
 # Define variables for each cam
 REPO_PATH="/Users/pz/Library/Mobile Documents/com~apple~CloudDocs/Development/Github site/pzink.github.io/"
 #IMAGE_PATH="./surfcam-image.jpg"
@@ -10,6 +12,8 @@ BRANCH_NAME="main" # Or your target branch
 
 # Navigate to the repository
 cd "$REPO_PATH"
+
+echo $PATH
 
 #take photo
 /usr/local/bin/imagesnap -d BRIO -w 0 surfcam-image.jpg
