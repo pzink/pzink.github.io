@@ -30,8 +30,8 @@ git config user.name "pz"
 git config user.email "peterazink@gmail.com"
 
 # Copy or move the new image into the repository
-#cp "$IMAGE_PATH" "./surfcam-image.jpg" 
-#cp "$IMAGE2_PATH" "./ocean-image.jpg"
+cp "$IMAGE_PATH" "images/surfcam-image.jpg" 
+cp "$IMAGE2_PATH" "images/ocean-image.jpg"
 
 # Add the image file to staging
 git add "./surfcam-image.jpg"
