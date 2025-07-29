@@ -2,15 +2,15 @@
 set -x
 
 #take photo
-imagesnap -d BRIO -w 1 surfcam-image.jpg
-imagesnap -d USB -w 1 ocean-image.jpg
+/usr/local/Cellar/imagesnap/0.2.16/bin/imagesnap -d BRIO -w 1 surfcam-image.jpg
+/usr/local/Cellar/imagesnap/0.2.16/bin/imagesnap -d USB -w 1 ocean-image.jpg
 
 sips ocean-image.jpg -o ocean-image.jpg --cropOffset 250 0 -c 350 1280
 
 # Define variables for each cam
 REPO_PATH="/Users/pz/Library/Mobile Documents/com~apple~CloudDocs/Development/Github site/pzink.github.io"
-IMAGE_PATH="/Users/pz/Library/Mobile Documents/com~apple~CloudDocs/Development/Github site/pzink.github.io/surfcam-image.jpg"
-IMAGE2_PATH="/Users/pz/Library/Mobile Documents/com~apple~CloudDocs/Development/Github site/pzink.github.io/ocean-image.jpg"
+#IMAGE_PATH="/Users/pz/Library/Mobile Documents/com~apple~CloudDocs/Development/Github site/pzink.github.io/surfcam-image.jpg"
+#IMAGE2_PATH="/Users/pz/Library/Mobile Documents/com~apple~CloudDocs/Development/Github site/pzink.github.io/ocean-image.jpg"
 COMMIT_MESSAGE="Automated image update"
 BRANCH_NAME="main" # Or your target branch
 
@@ -25,8 +25,8 @@ git config user.name "pz"
 git config user.email "peterazink@gmail.com"
 
 # Copy or move the new image into the repository
-cp "$IMAGE_PATH" "./surfcam-image.jpg" # Example: Copy to an 'images' folder
-cp "$IMAGE2_PATH" "./ocean-image.jpg" # Example: Copy to an 'images' folder
+#cp "$IMAGE_PATH" "./surfcam-image.jpg" 
+#cp "$IMAGE2_PATH" "./ocean-image.jpg"
 
 # Add the image file to staging
 git add "./surfcam-image.jpg"
