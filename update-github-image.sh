@@ -8,9 +8,9 @@ imagesnap -d USB -w 1 ocean-image.jpg
 sips ocean-image.jpg -o ocean-image.jpg --cropOffset 250 0 -c 350 1280
 
 # Define variables for each cam
-REPO_PATH="/Users/pz/Library/Mobile Documents/com~apple~CloudDocs/Development/pzink.pithub.io Site/pzink.github.io/"
-IMAGE_PATH="/Users/pz/Library/Mobile Documents/com~apple~CloudDocs/Development/pzink.pithub.io Site/pzink.github.io/surfcam-image.jpg"
-IMAGE2_PATH="/Users/pz/Library/Mobile Documents/com~apple~CloudDocs/Development/pzink.pithub.io Site/pzink.github.io/ocean-image.jpg"
+REPO_PATH="/Users/pz/Library/Mobile Documents/com~apple~CloudDocs/Development/Github site/pzink.github.io"
+IMAGE_PATH="/Users/pz/Library/Mobile Documents/com~apple~CloudDocs/Development/Github site/pzink.github.io/surfcam-image.jpg"
+IMAGE2_PATH="/Users/pz/Library/Mobile Documents/com~apple~CloudDocs/Development/Github site/pzink.github.io/ocean-image.jpg"
 COMMIT_MESSAGE="Automated image update"
 BRANCH_NAME="main" # Or your target branch
 
