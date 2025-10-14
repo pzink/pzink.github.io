@@ -11,13 +11,6 @@
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <script>
-        var nods = document.getElementsByClassName('NO-CACHE');
-            for (var i = 0; i < nods.length; i++)
-            {
-                nods[i].attributes['src'].value += "?a=" + Math.random();
-            }
-    </script>
   </head>
   <body>
     <div class="wrapper">
@@ -250,6 +243,13 @@
         dots[slideIndex - 1].className += " active";
         setTimeout(showSlides, 750); // Change image
     }
+
+    var nods = document.getElementsByClassName('NO-CACHE');
+        for (var i = 0; i < nods.length; i++)
+        {
+            nods[i].attributes['src'].value += "?a=" + Math.random();
+        }
+
 </script>
   </body>
 </html>
