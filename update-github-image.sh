@@ -29,6 +29,8 @@ git remote set-url origin git@github.com:pzink/pzink.github.io.git
 git config user.name "pz"
 git config user.email "peterazink@gmail.com"
 
+git pull
+
 # Copy or move the new image into the repository
 #cp "$IMAGE_PATH" "images/surfcam-image.jpg" 
 cp "$IMAGE2_PATH" "images/ocean-image.jpg"
