@@ -35,11 +35,11 @@ cp "$IMAGE2_PATH" "images/ocean-image.jpg"
 
 # Add the image file to staging
 #git add "./surfcam-image.jpg"
-git add "./ocean-image.jpg"
+git add "images/ocean-image.jpg"
 
 # remove images
 #rm "./surfcam-image.jpg" 
-rm "./ocean-image.jpg"
+#rm "images/ocean-image.jpg"
 
 # Commit the changes
 git commit -m "$COMMIT_MESSAGE"
