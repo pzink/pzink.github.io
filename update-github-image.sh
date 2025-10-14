@@ -29,11 +29,11 @@ git remote set-url origin git@github.com:pzink/pzink.github.io.git
 git config user.name "pz"
 git config user.email "peterazink@gmail.com"
 
-git pull
+git pull --rebase
 
 # Copy or move the new image into the repository
 #cp "$IMAGE_PATH" "images/surfcam-image.jpg" 
-cp "$IMAGE2_PATH" "images/ocean-image.jpg"
+mv "$IMAGE2_PATH" "images/ocean-image.jpg"
 
 # Add the image file to staging
 #git add "./surfcam-image.jpg"
@@ -47,4 +47,4 @@ git add "images/ocean-image.jpg"
 git commit -m "$COMMIT_MESSAGE"
 
 # Push to the remote repository
-git push origin "$BRANCH_NAME"
+git push -f origin "$BRANCH_NAME"
