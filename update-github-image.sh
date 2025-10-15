@@ -23,7 +23,7 @@ cd images
 gphoto2 --capture-image-and-download --force-overwrite --filename=ocean-image.jpg
 cd ..
 
-sips ocean-image.jpg -o ocean-image.jpg --cropOffset 250 0 -c 350 1280
+#sips ocean-image.jpg -o ocean-image.jpg --cropOffset 250 0 -c 350 1280
 
 # Ensure the remote uses SSH (replace with your actual repo)
 git remote set-url origin git@github.com:pzink/pzink.github.io.git
@@ -35,7 +35,7 @@ git config user.email "peterazink@gmail.com"
 git pull --rebase
 
 # Copy or move the new image into the repository
-#cp "$IMAGE_PATH" "images/surfcam-image.jpg" 
+cp "$IMAGE_PATH" "images/surfcam-image.jpg" 
 #mv "$IMAGE2_PATH" "images/ocean-image.jpg"
 
 # Add the image file to staging
