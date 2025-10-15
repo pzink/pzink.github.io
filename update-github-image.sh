@@ -6,7 +6,7 @@ export DISPLAY=:0
 
 # Define variables for each cam
 REPO_PATH="/Users/pz/Library/Mobile Documents/com~apple~CloudDocs/Development/Github site/pzink.github.io/"
-#IMAGE_PATH="./surfcam-image.jpg"
+IMAGE_PATH="./surfcam-image.jpg"
 IMAGE2_PATH="./ocean-image.jpg"
 COMMIT_MESSAGE="Automated image update"
 BRANCH_NAME="main" # Or your target branch
@@ -14,16 +14,13 @@ BRANCH_NAME="main" # Or your target branch
 # Navigate to the repository
 cd "$REPO_PATH"
 
-echo $PATH
+imagesnap -d USB -w 1 surfcam-image.jpg 
+mv surfcam-image.jpg images/surfcam-image.jpg
 
-#take photo
-#/usr/local/bin/imagesnap -d BRIO -w 0 surfcam-image.jpg 2>&1 >> ./imagesnap_cron.log
-#/usr/local/bin/imagesnap -d USB -w 0 ocean-image.jpg #working version with USB webcam
-#cd images
-gphoto2 --capture-image-and-download --force-overwrite --filename=ocean-image.jpg
-#cd ..
-
-#sips ocean-image.jpg -o ocean-image.jpg --cropOffset 250 0 -c 350 1280
+#Crop image
+cd images
+sips ocean-image.jpg -o ocean-image.jpg --cropOffset 900 0 -c 1600 4416
+cd ..
 
 # Ensure the remote uses SSH (replace with your actual repo)
 git remote set-url origin git@github.com:pzink/pzink.github.io.git
@@ -35,17 +32,7 @@ git config user.email "peterazink@gmail.com"
 git pull --rebase
 
 # Copy or move the new image into the repository
-echo "The current directory is: $(pwd)"
-#cp "$IMAGE_PATH" "images/surfcam-image.jpg" 
-cp "$IMAGE2_PATH" "images/ocean-image.jpg"
-
-# Add the image file to staging
-#git add "./surfcam-image.jpg"
 git add "images/ocean-image.jpg"
-
-# remove images
-#rm "./surfcam-image.jpg" 
-#rm "images/ocean-image.jpg"
 
 # Commit the changes
 git commit -m "$COMMIT_MESSAGE"
