@@ -35,6 +35,7 @@ git pull --rebase
 
 # Copy or move the new image into the repository
 git add "images/ocean-image.jpg"
+git add "images/surfcam-image.jpg"
 
 # Commit the changes
 git commit -m "$COMMIT_MESSAGE"
