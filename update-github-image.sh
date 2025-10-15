@@ -17,8 +17,10 @@ cd "$REPO_PATH"
 imagesnap -d USB -w 1 surfcam-image.jpg 
 mv surfcam-image.jpg images/surfcam-image.jpg
 
-#Crop image
+
+#Crop images
 cd images
+sips surfcam-image.jpg -o surfcam-image.jpg --cropOffset 150 0 -c 300 1280
 sips ocean-image.jpg -o ocean-image.jpg --cropOffset 900 0 -c 1600 4416
 cd ..
 
