@@ -19,9 +19,9 @@ echo $PATH
 #take photo
 #/usr/local/bin/imagesnap -d BRIO -w 0 surfcam-image.jpg 2>&1 >> ./imagesnap_cron.log
 #/usr/local/bin/imagesnap -d USB -w 0 ocean-image.jpg #working version with USB webcam
-cd images
+#cd images
 gphoto2 --capture-image-and-download --force-overwrite --filename=ocean-image.jpg
-cd ..
+#cd ..
 
 #sips ocean-image.jpg -o ocean-image.jpg --cropOffset 250 0 -c 350 1280
 
@@ -35,8 +35,9 @@ git config user.email "peterazink@gmail.com"
 git pull --rebase
 
 # Copy or move the new image into the repository
-cp "$IMAGE_PATH" "images/surfcam-image.jpg" 
-#mv "$IMAGE2_PATH" "images/ocean-image.jpg"
+echo "The current directory is: $(pwd)"
+#cp "$IMAGE_PATH" "images/surfcam-image.jpg" 
+cp "$IMAGE2_PATH" "images/ocean-image.jpg"
 
 # Add the image file to staging
 #git add "./surfcam-image.jpg"
