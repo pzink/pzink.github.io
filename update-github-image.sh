@@ -13,10 +13,7 @@ BRANCH_NAME="main" # Or your target branch
 
 # Navigate to the repository
 cd "$REPO_PATH"
-
-#Crop images
 cd images
-sips ocean-image.jpg -o ocean-image.jpg --cropOffset 1800 0 -c 1600 4416
 
 # add date time stamp to images
 magick surfcam.gif -fill white -gravity southwest -pointsize 80 -annotate 0 "$(TZ='America/New_York' date +'%d %b %Y %H:%M %Z')" surfcam.gif
