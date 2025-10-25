@@ -14,17 +14,12 @@ BRANCH_NAME="main" # Or your target branch
 # Navigate to the repository
 cd "$REPO_PATH"
 
-# take image with the web cam
-imagesnap -d USB -w 1 surfcam-image.jpg 
-mv surfcam-image.jpg images/surfcam-image.jpg
-
 #Crop images
 cd images
-sips surfcam-image.jpg -o surfcam-image.jpg --cropOffset 150 0 -c 300 1280
-sips ocean-image.jpg -o ocean-image.jpg --cropOffset 900 0 -c 1600 4416
+sips ocean-image.jpg -o ocean-image.jpg --cropOffset 1800 0 -c 1600 4416
 
 # add date time stamp to images
-magick surfcam-image.jpg -fill white -gravity southwest -pointsize 32 -annotate 0 "$(TZ='America/New_York' date +'%d %b %Y %H:%M %Z')" surfcam-image.jpg
+magick surfcam.gif -fill white -gravity southwest -pointsize 80 -annotate 0 "$(TZ='America/New_York' date +'%d %b %Y %H:%M %Z')" surfcam.gif
 magick ocean-image.jpg -fill white -gravity southwest -pointsize 80 -annotate 0 "$(TZ='America/New_York' date +'%d %b %Y %H:%M %Z')" ocean-image.jpg
 
 #return to main git dir
@@ -41,7 +36,7 @@ git pull --rebase
 
 # Copy or move the new images into the repository
 git add "images/ocean-image.jpg"
-git add "images/surfcam-image.jpg"
+git add "images/surfcam.gif"
 
 # Commit the changes
 git commit -m "$COMMIT_MESSAGE"
