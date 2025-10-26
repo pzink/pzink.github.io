@@ -1,6 +1,4 @@
 #!/bin/bash
-set -x
-
 export PATH="/usr/local/bin:$PATH" # Add /usr/local/bin
 export DISPLAY=:0
 
