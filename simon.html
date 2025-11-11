@@ -1,197 +1,200 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="robots" content="noindex">
-    <title>Peter A. Zink</title>
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width">
-    <!--[if lt IE 9]>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="chrome=1">
+	<meta name="robots" content="noindex">
+	<title>Peter A. Zink</title>
+
+	<link rel="stylesheet" href="stylesheets/styles.css">
+	<link rel="stylesheet" href="stylesheets/pygment_trac.css">
+	<meta name="viewport" content="width=device-width">
+	<!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-<meta http-equiv="Content-Language" content="en-us">
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-<title>Sort of Simon</title>
+	<meta http-equiv="Content-Language" content="en-us">
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+	<title>Sort of Simon</title>
 
-<script language="javascript" type="text/javascript">
+	<script language="javascript" type="text/javascript">
 
-	var cellOrder = new Array(99);
-	var i=0;
-	var j=0;
-	var k=0;
-	var speed=500;
+		var cellOrder = new Array(99);
+		var i = 0;
+		var j = 0;
+		var k = 0;
+		var speed = 500;
 
 
-function firstSquare() {
-	document.forms[0].elements['startButton'].disabled="true";
-	cellOrder[0] = rand(4);
-	playMemory();
-}
-
-function playMemory() {
-
-	document.forms[0].elements['round'].value=j+1;
-
-		if (i <= j) {
-
-			onCell = cellOrder[i];
-
-			switch (onCell){
-				case 1:
-					onRow = 0;
-					onColumn = 0;
-					onColor="rgb(255,0,0)";
-				break
-				case 2:
-					onRow = 0;
-					onColumn = 1;
-					onColor="rgb(0,255,0)";
-				break
-				case 3:
-					onRow = 1;
-					onColumn = 0;
-					onColor="rgb(0,0,255)";
-				break
-				case 4:
-					onRow = 1;
-					onColumn = 1;
-					onColor="rgb(255,255,0)";
-				break
-				default:
-					document.write("oops")
-				}
-
-			x=document.getElementById('table1').rows[onRow].cells;
-			x[onColumn].style.background=onColor;
-
-    		setTimeout("nextSquare()",speed);
-
+		function firstSquare() {
+			document.forms[0].elements['startButton'].disabled = "true";
+			cellOrder[0] = rand(4);
+			playMemory();
 		}
-		else if (i > j){
-			nextRound();
-		}
-		else {
-			alert('what?')
-		}
-}
 
-function nextSquare(){
+		function playMemory() {
 
-	i++;
-			onColor="rgb(255,255,255)";
-			n=document.getElementById('table1').rows[0].cells;
-			n[0].style.background=onColor;
-			n[1].style.background=onColor;
-			n=document.getElementById('table1').rows[1].cells;
-			n[0].style.background=onColor;
-			n[1].style.background=onColor;
+			document.forms[0].elements['round'].value = j + 1;
 
-	setTimeout("playMemory()",speed);
-}
+			if (i <= j) {
 
+				onCell = cellOrder[i];
 
-function nextRound(){
-
-	document.forms[0].elements['info'].value=cellOrder;
-	i=0;
-	k=0;
-	j++;
-	m=j+1;
-	cellOrder[j] = rand(4);
-	speed = speed-(100/j)
-
-}
-
-function yourTurn(cellNumber){
-
-				onCell = cellNumber;
-
-				switch (onCell){
+				switch (onCell) {
 					case 1:
 						onRow = 0;
 						onColumn = 0;
-						onColor="rgb(255,0,0)";
-					break
+						onColor = "rgb(255,0,0)";
+						break
 					case 2:
 						onRow = 0;
 						onColumn = 1;
-						onColor="rgb(0,255,0)";
-					break
+						onColor = "rgb(0,255,0)";
+						break
 					case 3:
 						onRow = 1;
 						onColumn = 0;
-						onColor="rgb(0,0,255)";
-					break
+						onColor = "rgb(0,0,255)";
+						break
 					case 4:
 						onRow = 1;
 						onColumn = 1;
-						onColor="rgb(255,255,0)";
-					break
+						onColor = "rgb(255,255,0)";
+						break
 					default:
 						document.write("oops")
-					}
+				}
 
-				x=document.getElementById('table1').rows[onRow].cells;
-				x[onColumn].style.background=onColor;
+				x = document.getElementById('table1').rows[onRow].cells;
+				x[onColumn].style.background = onColor;
 
-				if (cellOrder[k] == cellNumber) {
-						k++;
-						setTimeout("clearSquares()",250);
-					}
+				setTimeout("nextSquare()", speed);
+
+			}
+			else if (i > j) {
+				nextRound();
+			}
+			else {
+				alert('what?')
+			}
+		}
+
+		function nextSquare() {
+
+			i++;
+			onColor = "rgb(255,255,255)";
+			n = document.getElementById('table1').rows[0].cells;
+			n[0].style.background = onColor;
+			n[1].style.background = onColor;
+			n = document.getElementById('table1').rows[1].cells;
+			n[0].style.background = onColor;
+			n[1].style.background = onColor;
+
+			setTimeout("playMemory()", speed);
+		}
+
+
+		function nextRound() {
+
+			document.forms[0].elements['info'].value = cellOrder;
+			i = 0;
+			k = 0;
+			j++;
+			m = j + 1;
+			cellOrder[j] = rand(4);
+			speed = speed - (100 / j)
+
+		}
+
+		function yourTurn(cellNumber) {
+
+			onCell = cellNumber;
+
+			switch (onCell) {
+				case 1:
+					onRow = 0;
+					onColumn = 0;
+					onColor = "rgb(255,0,0)";
+					break
+				case 2:
+					onRow = 0;
+					onColumn = 1;
+					onColor = "rgb(0,255,0)";
+					break
+				case 3:
+					onRow = 1;
+					onColumn = 0;
+					onColor = "rgb(0,0,255)";
+					break
+				case 4:
+					onRow = 1;
+					onColumn = 1;
+					onColor = "rgb(255,255,0)";
+					break
+				default:
+					document.write("oops")
+			}
+
+			x = document.getElementById('table1').rows[onRow].cells;
+			x[onColumn].style.background = onColor;
+
+			if (cellOrder[k] == cellNumber) {
+				k++;
+				setTimeout("clearSquares()", 250);
+			}
+			else {
+				if (j > 0) {
+					alert("Sorry, try again!");
+					window.location.reload();
+				}
 				else {
-					if (j > 0){
-						alert("Sorry, try again!");
-						window.location.reload();
-						}
-					else {
-						alert("Click Start to Play");
-						window.location.reload();
-						}
-					}
+					alert("Click Start to Play");
+					window.location.reload();
+				}
+			}
 
-}
+		}
 
-function clearSquares(){
+		function clearSquares() {
 
-			onColor="rgb(255,255,255)";
-			n=document.getElementById('table1').rows[0].cells;
-			n[0].style.background=onColor;
-			n[1].style.background=onColor;
-			n=document.getElementById('table1').rows[1].cells;
-			n[0].style.background=onColor;
-			n[1].style.background=onColor;
+			onColor = "rgb(255,255,255)";
+			n = document.getElementById('table1').rows[0].cells;
+			n[0].style.background = onColor;
+			n[1].style.background = onColor;
+			n = document.getElementById('table1').rows[1].cells;
+			n[0].style.background = onColor;
+			n[1].style.background = onColor;
 
-if (k == j) {
-	setTimeout("playMemory()",1000);
-	}
-}
+			if (k == j) {
+				setTimeout("playMemory()", 1000);
+			}
+		}
 
-// The Central Randomizer 1.3 (C) 1997 by Paul Houle (houle@msc.cornell.edu)
+		// The Central Randomizer 1.3 (C) 1997 by Paul Houle (houle@msc.cornell.edu)
 
-	rnd.today=new Date();
-	rnd.seed=rnd.today.getTime();
+		rnd.today = new Date();
+		rnd.seed = rnd.today.getTime();
 
-function rnd() {
-        rnd.seed = (rnd.seed*9301+49297) % 233280;
-        return rnd.seed/(233280.0);
-}
+		function rnd() {
+			rnd.seed = (rnd.seed * 9301 + 49297) % 233280;
+			return rnd.seed / (233280.0);
+		}
 
-function rand(number) {
-        return Math.ceil(rnd()*number);
-}
-// end central randomizer.
+		function rand(number) {
+			return Math.ceil(rnd() * number);
+		}
+		// end central randomizer.
 
-</script>
+	</script>
 
-<style>
-table, th, td {
-  border: 4px solid black;
-  border-radius: 25px;
-}
-</style>
+	<style>
+		table,
+		th,
+		td {
+			border: 4px solid black;
+			border-radius: 25px;
+		}
+	</style>
 
 </head>
 
@@ -199,24 +202,21 @@ table, th, td {
 	<div class="wrapper">
 		<header>
 			<ul>
-				<li><a href="index.html"><strong>Home</strong></a></li>
-				<li><a href="projects.html"><strong>Projects</strong></a></li>
-				<li><a href="surf.html"><strong>Surf</strong></a></li>
+				<li class="full-width"><a href="index.html"><strong>Home</strong></a></li>
 			</ul>
-			<br><br>
+				<h2>Simon Says...</h2>
 			<form>
+				<button id="startButton" onclick="javascript:firstSquare();"
+					style="display:block; width:220px; height:64px; font-size:20px; padding:12px 16px; margin:8px 0;">Start</button>
+				<br />
+				<blockquote>Round #: <input readonly type="text" name="round" size="5"><br><br>
+				<p>Click the squares in the same order that "Simon" does. Each round adds an additional square and
+					an incremental increase in speed.</p>
+				<!--input type="hidden" id="info" size="40" /--></blockquote>
+			</form>
 		</header>
 		<section>
-			<h2>Simon Says...</h2>
-			<button id="startButton" onclick="javascript:firstSquare();"
-				style="display:block; width:220px; height:64px; font-size:20px; padding:12px 16px; margin:8px 0;">Start</button>
-			<br />
-			<p>Round #: <input readonly type="text" name="round" size="5"></p>
-			<p>Click the squares in the same order that "Simon" does. <br>Each round adds an additional square and an
-				incremental increase in speed.</p>
-
-			<input type="hidden" id="info" size="40" />
-<!--
+			<!--
   The 2x2 table below represents the Simon pad grid.
   Each cell is a clickable pad, wired via onMouseDown to yourTurn(n).
   Cell IDs (cell1..cell4) and table ID (table1) are referenced in game logic.
@@ -233,18 +233,14 @@ table, th, td {
 					<td width="250" id="cell4" onMouseDown="javascript:yourTurn(4)">&nbsp;</td>
 				</tr>
 			</table>
-
-			</form>
+		<footer>
+			<p>"Sort of Simon" -- JavaScript written by Peter A. Zink in 2001. (<a
+					href="http://pzink.com">pzink.com</a>)<br />
+				Based on <a href="https://en.wikipedia.org/wiki/Simon_(game)">the classic Milton-Bradley
+					game</a><br />
+				Uses the Central Randomizer 1.3 (C) 1997 by Paul Houle<br /></p>
+		</footer>
 		</section>
-			<footer>
-				<p>"Sort of Simon" -- JavaScript written by Peter A. Zink in 2001. (<a
-						href="http://pzink.com">pzink.com</a>)<br />
-					Based on <a href="https://en.wikipedia.org/wiki/Simon_(game)">the classic Milton-Bradley
-						game</a><br />
-					Uses the Central Randomizer 1.3 (C) 1997 by Paul Houle<br /></p>
-					        <br>Copyright © 2025, Peter A. Zink</small>
-			</footer>
-	</div>
-	    <script src="javascripts/scale.fix.js"></script>
 </body>
+
 </html>
