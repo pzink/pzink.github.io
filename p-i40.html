@@ -1,124 +1,271 @@
-<!doctype html>
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="chrome=1">
-  <meta name="robots" content="noindex">
-  <title>Peter A. Zink</title>
-
-  <link rel="stylesheet" href="stylesheets/styles.css">
-  <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-  <meta name="viewport" content="width=device-width">
-  <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+	<title>Peter A. Zink</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
 </head>
 
-<body>
-  <div class="wrapper">
-    <header>
-      <ul>
-        <li><a href="index.html"><strong>Home</strong></a></li>
-        <li><a href="projects.html"><strong>Projects</strong></a></li>
-        <li><a href="teaching.html"><strong>Teaching</strong></a></li>
-      </ul>
-      <h4>&#9702 Industry 4.0</h4>
-      <h4>&#9702 <a href="p-emsys.html">Electro-Mechanical Systems</a></h4>
-      <h4>&#9702  <a href="p-cad.html">Computer-Aided Design</a></h4>
-      <h4>&#9702 <a href="p-eprop.html">Electrical Propulsion</a></h4>
-      <br>
-      <h1>Industry 4.0</h1>
-      <p>LEGO Looping Manufacturing Bot<img src="images/mfg-loop-legobot-cr.gif"
-          alt="LEGO Looping Manufacturing Bot"><br>The PTC Education team needed a simple demonstration of a closed-loop manufacturing system with
-        state-based control and vision systems.<br> In creating any kind of manufacturing demonstration system, a challenge is to build it to be good enough to generate lots of data, and bad enough so that there is enough variation between operations to approxiomate reality.
-    </header>
-    <section>
-      <h2>Industry 4.0</h2>
-      <p>Over six years co-directing the education programs at <a ref="ptc.com/education" target="_blank">PTC</a>, I
-        worked with industry, government and academic thought leaders creating industrial and educational systems
-        leveraging smart and interconnected "Industry 4.0" technologies and platforms. <br> <br> Many of those projects
-        involved using PTC's augmented reality platform, Vuforia, combined with their Industrial Internet of Things
-        platform, Thingworx, to create real-time, bi-directional digital twins. We used a Universal Robotics UR3 and Allen-Bradley Programmable Logic Controllers (PLCs) and created demonstrations to help thought leading faculty understand how they could incorporate these tools into their classes.</p>
-      <p>Over the years I've collaborated with and advised dozens of engineering faculty globally, exploring the
-        principles, concepts and technologies involved with smart manufacturing and Industry 4.0. One of the larger
-        projects I helped with is the Smart Factory at Purdue Polytechnic Institute.
-      <div style="margin-bottom: 1em;">
-<video width="100%" controls>
-  <source src="images/welcome-to-the-purdue-polytechnic-smart-learning-factory.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
-      </div>
-   I contributed to the conceptual design of their <a
-        href="https://polytechnic.purdue.edu/experience-purdue-smart-manufacturing-labs" target="_blank">Smart Factory</a> as well as
-      their <a href="https://polytechnic.purdue.edu/degrees/smart-manufacturing-industrial-informatics" target="_blank">Smart
-        Manufacturing curriculum</a>.</p>
-      <h2>Onshape-based CAD Digital Twins</h2>
-      <div style="margin-bottom: 1em;">
-        <img src="images/UR3OnshapeDigitalTwin.gif">
-      </div>
-      <p>
-        In an effort to lower the barrier to entry for these types of technologies and make them more broadly accessible to
-        academia, my team democratized some of the industrial capabilities in the PTC portfolio using open-course platforms. For example, we used Python with Google Colab and Onshape, which both have free options and are widely available. 
-        <div style="margin-bottom: 1em;">
-          <img src="images/i40-arch.png">
-        </div>
-        With these and other low-cost edge hardware platforms, we were able to create
-        bi-directional near-real time CAD digital twins, for example, using CAD waypoints to drive the motion of the robot:
-        <img src="images/UR3-waypoints.png" alt="UR3 Waypoint Programming with Onshape"> 
-        The <a href="https://cad.onshape.com/documents/f45fad4854ca95357c3937ee/w/947c0b3bc5c329a1c2960014/e/e13b8f1b2de53390ea9d2e34" target="_blank">configurable Onshape document is public</a>, as is the <a href="https://colab.research.google.com/github/PTC-Education/PTC-API-Playground/blob/main/UR3e_Onshape_Monitor_Digital_Twin_with_ThingWorx.ipynb#scrollTo=oMpN0V51Whw1" target="_blank">Google Colab Python</a> to communicate with the robot, included in the <a href="https://github.com/PTC-Education/PTC-API-Playground/blob/main/UR3e_Onshape_Monitor_Digital_Twin_with_ThingWorx.ipynb" target="_blank">PTC Education API Playground</a>, developed by my team at PTC. </p>
-      <h2>
-        <h2> PLC controlled Lego SPIKE Prime</h2>
-        <div style="margin-bottom: 1em;">
-          <img src="images/PLC-AR-short.webp">
-        </div>
-        <p>This short video shows how we were using a Rockwell Automation Allen-Bradley PLC integrated into a small,
-          portable demonstration platform. I wrote ladder logic in the PLC to control the attached, light array. Using a
-          prototype spatial computing platform, <a href="https://spatialtoolbox.vuforia.com" target="_blank">sVuforia Spatial Toolbox</a>, I connected to the Lego spike prime over
-          Bluetooth, and could control its motion using the parameters coming from the PLC. When the light was green the
-          vehicle would go, for yellow it would go at half speed, and when red it would stop..</p>
-        <p>The camera pans out to show the view of an iPad, which was running an AR experience at the same time. In the
-          augmented reality experience, there is a AR stop light on a lamp post, which is also connected to the data
-          from the PLC through thing works and updates in real time. Note that the thing works instance used in this
-          demonstration was hosted in the cloud, so the PLC is sending the state of the system to the cloud, which is
-          then coming back to the iPad. When the light turns from yellow to red, you can see a small delay between the
-          actual lights on the PLC demonstrator versus the AR traffic light due to that added complexity.</p>
-        <p>On the left side of the screen of the IOT demonstrator shows Rockwell Automation's Emulate 3D, where we also
-          imported a 3-D model of the light post and we're able to animate it in real time as part of their automation
-          software, and the right side of the screen shows a simple Thingworx 'mashup' or dashboard, with a 2D digital
-          twin of the traffic light.</p>
-        <div style="margin-bottom: 1em;">
-          <img src="images/PLC-CAD-dt.webp">
-        </div>
-        <p>The video above shows the same I4.0 demonstrator and program running, but in this case, the data is being
-          sent to Onshape to animate a CAD model in near-real-time. The demonstration leverages REST API protocol, which
-          isn't meant for a real time processing, and generally include includes a approximately one second delay.</p>
-        <p>Both at BU and PTC, I bought and used Universal Robots. At PTC we used the UR-3 to create several
-          demonstrations and examples of how to integrate with PTC technologies like augmented reality to help factory workers improve quality and productivity. </p>
-        <div style="margin-bottom: 1em;">
-          <img src="images/ur-ar.png">
-        </div>
-        <p>One of the most useful examples I created was a re-creation of a demonstration I first built at Boston University, where
-          the robot rolls a die, a vision system locates the die, picks it up, counts the number on the
-          top face and stors that in a database, then rolls the die again and again. AT PTC I built a portable cart for the robot, which allowed us to move this demonstration to conference rooms.
-          </p>
-        <div style="margin-bottom: 1em;">
-          <img src="images/robot-cart.png">
-        </div>
-        <p>
-          This was a great way to generate a large data set, end
-          of the results of the day could be used to trigger different events in a more complex demonstration system.
-        </p>
-        <div style="margin-bottom: 1em;">
-          <img src="images/plinko.webp">
-        </div>
-        <p>Universal robots are easy to use, affordable and relatively safe. For even lower budget solutions, I like to use LEGO as a way to apply apply some of the same principles. In the video above, I created a small
-          version of the classic "Let's Make a Deal" Plinko game, as a way to try to generate a large data set with a repeatable
-          process with some variation. The Lego elevator would drop the disc, which could fall into either the left or
-          right channel, which was recorded and stored. An example of natural variation in a manufacturing system.</p>
-    </section>
-  </div>
-  <script src="javascripts/scale.fix.js"></script>
+<body class="is-preload">
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Main -->
+		<div id="main">
+			<div class="inner">
+
+				<!-- Header -->
+				<header id="header">
+					<a href="index.html" class="logo"><strong>Peter A. Zink,</strong> PhD</a>
+				</header>
+
+				<!-- Content -->
+				<section>
+					<header class="main">
+						<h1>Industry 4.0 / Smart Manufacturing</h1>
+					</header>
+					<p>Over six years co-directing the education programs at <a href="ptc.com/education"
+							target="_blank">PTC</a>, I
+						worked with industry, government and academic thought leaders creating industrial and
+						educational systems
+						leveraging smart and interconnected "Industry 4.0" technologies and platforms. <br><br>
+						<span class="image left">
+							<video src="images/welcome-to-the-purdue-polytechnic-smart-learning-factory.mp4" controls autoplay style="max-width:100%; height:auto;">
+								Your browser does not support the video tag.
+							</video>
+						</span>
+						Many of those projects involved using PTC's augmented reality platform, Vuforia, combined with
+						their Industrial Internet of Things platform, Thingworx, to create real-time, bi-directional
+						digital twins. We used a Universal Robotics UR3 and
+						Allen-Bradley Programmable Logic Controllers (PLCs) and created demonstrations to help thought
+						leading faculty understand how they could incorporate these tools into their classes.
+					</p>
+
+					<p>I've collaborated with and advised dozens of engineering faculty globally, exploring the
+						principles, concepts and technologies involved with smart manufacturing and Industry 4.0. One of
+						the larger
+						projects I helped with is the Smart Factory at Purdue Polytechnic Institute.</p>
+
+
+					<p>Beginning in 2019, I worked closely with the Purdue polytechnic faculty, technical staff and
+						administration to help
+						them conceptualize, design and realize a <a
+							href="https://polytechnic.purdue.edu/experience-purdue-smart-manufacturing-labs">Smart
+							Learning Factory</a> for
+						their undergraduate students, introducing them to the concepts of digital engineering. I also
+						provided a framework
+						and outline for their <a
+							href="https://polytechnic.purdue.edu/degrees/smart-manufacturing-industrial-informatics">Smart
+							Manufacturing
+							curriculum</a>.</p>
+
+					<hr class="major" />
+
+					<h2>Onshape-based CAD Digital Twins</h2>
+					<p>
+						PTC portfolio using open-course platforms. We were lucky to have a Universal Robotics UR3
+						collaborative robot for a lot of our testing, but for the digital twin creation, systems
+						PTC portfolio using open-course platforms. We were lucky to have a Universal rRobotics UR3
+						collaborative robot for a lot of our testing, but for the digital twin creation, systems
+						integration and visualization, we used Python with Google Colab and Onshape, which both have
+						free options and are widely available. </p>
+					<div class="row gtr-200">
+						<div class="col-6 col-12-medium">
+							<span class="image fit"><img src="images/UR3OnshapeDigitalTwin.gif"></span>
+						</div>
+						<div class="col-6 col-12-medium">
+							<span class="image fit"><img src="images/i40-arch.webp" alt="" /></span>
+						</div>
+					</div>
+					<div class="row gtr-200">
+						<p><span class="image right"> <img src="images/UR3-waypoints.webp"
+									alt="UR3 Waypoint Programming with Onshape">
+							</span>With these and other low-cost edge hardware platforms, we were able to create
+							bi-directional near-real
+							time CAD digital twins, for example, using waypoints defined in an Onshape CAD document to
+							drive the motion of the robot.<br>The <a
+								href="https://cad.onshape.com/documents/f45fad4854ca95357c3937ee/w/947c0b3bc5c329a1c2960014/e/e13b8f1b2de53390ea9d2e34"
+								target="_blank">configurable Onshape document is public</a>, as is the <a
+								href="https://colab.research.google.com/github/PTC-Education/PTC-API-Playground/blob/main/UR3e_Onshape_Monitor_Digital_Twin_with_ThingWorx.ipynb#scrollTo=oMpN0V51Whw1"
+								target="_blank">Google Colab Python</a> to communicate with the robot, included in the
+							<a href="https://github.com/PTC-Education/PTC-API-Playground/blob/main/UR3e_Onshape_Monitor_Digital_Twin_with_ThingWorx.ipynb"
+								target="_blank">PTC Education API Playground</a>, developed by my team at PTC. </p>
+					</div>
+
+					<hr class="major" />
+					<h2>PLC controlled Lego SPIKE Prime</h2>
+					<div class="row gtr-200">
+						
+						<p>This short video shows how we were using a Rockwell Automation Allen-Bradley PLC integrated
+							into a small,
+							portable demonstration platform. I wrote ladder logic in the PLC to control the attached,
+							light array. Using a
+							prototype spatial computing platform, <a href="https://spatialtoolbox.vuforia.com"
+								target="_blank">Vuforia Spatial Toolbox</a>, I connected to the Lego spike prime over
+							Bluetooth, and could control its motion using the parameters coming from the PLC. When the
+							light was green the
+							vehicle would go, for yellow it would go at half speed, and when red it would stop.</p>
+						<p><span class="image fit"><img src="images/PLC-AR-short.webp"></span>
+							
+							The camera pans out to show the view of an iPad, which was running an AR experience at the
+							same time. In the
+							augmented reality experience, there is a AR stop light on a lamp post, which is also
+							connected to the data
+							from the PLC through thing works and updates in real time. Note that the thing works
+							instance used in this
+							demonstration was hosted in the cloud, so the PLC is sending the state of the system to the
+							cloud, which is
+							then coming back to the iPad. When the light turns from yellow to red, you can see a small
+							delay between the
+							actual lights on the PLC demonstrator versus the AR traffic light due to that added
+							complexity.
+						</p>
+						<p>On the left side of the screen of the IOT demonstrator shows Rockwell Automation's Emulate
+							3D, where we also
+							imported a 3-D model of the light post and we're able to animate it in real time as part of
+							their automation
+							software, and the right side of the screen shows a simple Thingworx 'mashup' or dashboard,
+							with a 2D digital
+							twin of the traffic light.</p>
+
+						<p><span class="image right"><img src="images/PLC-CAD-dt.webp"></span>The video at right shows the same I4.0 demonstrator and program running, but in this case,
+							the data is being
+							sent to Onshape to animate a CAD model in near-real-time. The demonstration leverages REST
+							API protocol, which
+							isn't meant for real time processing, and generally includes approximately a one second
+							delay.</p>
+						<p><span class="image left"><img src="images/ur-ar.webp"></span>Both at BU and PTC, I bought and
+							used Universal Robots. At PTC we used the UR-3 to create several
+							demonstrations and examples of how to integrate with PTC technologies like augmented reality
+							to help factory workers improve quality and productivity. <br></p>
+					</div>
+					<hr class="major" />
+					<h2>Universal Robot Mini-Digital Engineering Lab</h2>
+					<div class="row gtr-200">
+						
+						<p><span class="image right"> <img src="images/robot-cart.webp"></span>One of the most useful
+							examples I created was a re-creation of a demonstration I first built at Boston University,
+							where
+							the robot rolls a die, a vision system locates the die, picks it up, counts the number on
+							the
+							top face and stores that in a database, then rolls the die again and again. AT PTC I built a
+							portable cart for the robot, which allowed us to move this demonstration to conference
+							rooms.
+							<br>
+							This was a great way to generate a large data set, end
+							of the results of the day could be used to trigger different events in a more complex
+							demonstration system.</p>
+
+					</div>
+					<hr class="major" />
+					<h2>LEGO for Manufacturing</h2>
+					<div class="row gtr-200">
+							<p><span class="image right"><img src="images/plinko.webp"></span>Universal robots are easy to use, affordable and relatively safe. For even lower budget
+							solutions, I like to use LEGO as a way to apply some of the same principles.<br> 
+							<br>I also created a small
+							version of the classic "Let's Make a Deal" Plinko game, as a way to try to generate a large
+							data set with a repeatable
+							process with some variation. The Lego elevator would drop the disc, which could fall into
+							either the left or
+							right channel, which was recorded and stored. An example of natural variation in a
+							manufacturing system.
+						</p>
+<p><span class="image left"><img src="images/mfg-loop-legobot-cr.gif"></span>This LEGO robot is another simple example of a closed-loop manufacturing system with state-based control and a vision system.
+In creating any kind of manufacturing demonstration system, a challenge is to build it to be good enough to generate lots of data, and bad enough so that there is enough variation between operations to approxiomate reality. </p>
+						
+					</div>
+
+				</section>
+
+			</div>
+		</div>
+
+		<!-- Sidebar -->
+		<div id="sidebar">
+			<div class="inner">
+
+				<!-- Menu -->
+				<nav id="menu">
+	<header class="major">
+		<h2>Menu</h2>
+	</header>
+	<ul>
+		<li><a href="index.html">Home</a></li>
+		<li><a href="about.html">About</a></li>
+		<li><a href="consult.html">3D Visualization</a></li>
+		<li>
+			<span class="opener">Interests</span>
+			<ul>
+				<li><a href="p-i40.html">Industry 4.0</a></li>
+				<li><a href="p-emsys.html">Electro-Mechanical Systems</a></li>
+				<li><a href="p-cad.html">Computer-Aided Design</a></li>
+				<li><a href="p-eprop.html">Electrical Propulsion</a></li>
+				<li><a href="p-wood.html">Woodwork</a></li>
+			</ul>
+		</li>
+		<li>
+			<span class="opener">Academics</span>
+			<ul>
+				<li><a href="teaching.html">Teaching</a></li>
+				<li><a href="advising.html">Advising</a></li>
+			</ul>
+		</li>
+		<li><a href="surf.html">Surf</a></li>
+	</ul>
+</nav>
+				<!-- Section -->
+				<section>
+					<header class="major">
+						<h2>Links</h2>
+					</header>
+					<div class="mini-posts">
+						<article>
+
+						</article>
+					</div>
+				</section>
+
+				<!-- Section -->
+				<section>
+					<header class="major">
+						<h2>Get in touch</h2>
+					</header>
+					<ul class="contact">
+						<li class="icon solid fa-envelope"><strong>Contact me</strong> on <a
+								href="https://www.linkedin.com/in/peterazink/" target="_blank">LinkedIn</a></li>
+						<li class="icon solid fa-book">Academic Publications on <br><a
+								href="https://scholar.google.com/citations?user=yLksh6AAAAAJ&hl" target="_blank">Google
+								Scholar</a><br />
+						</li>
+					</ul>
+				</section>
+
+				<!-- Footer -->
+				<footer id="footer">
+					<p class="copyright">&copy; Peter A. Zink, https://pzink.com. <br>All rights reserved.<br>
+						Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+				</footer>
+
+			</div>
+		</div>
+		<!--End Sidebar-->
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
 </body>
 
 </html>
