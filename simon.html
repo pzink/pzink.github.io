@@ -41,7 +41,7 @@
 			<form>
 				<button id="startButton" onclick="javascript:firstSquare();">Start</button>
 				<br />
-				<blockquote>Round #: <input readonly type="text" name="round" size="2" style="width:2.5em;"><br>
+				<blockquote>Round #: <input readonly type="text" name="round" size="2" style="width:5.5em; text-align: center;"><br>
 				
 				<input type="hidden" id="info" size="1" /></blockquote>
 			</form>
@@ -227,22 +227,22 @@
 					case 1:
 						onRow = 0;
 						onColumn = 0;
-						onColor = "rgb(255,0,0)";
+						onColor = "rgb(255,255,0)";
 						break
 					case 2:
 						onRow = 0;
 						onColumn = 1;
-						onColor = "rgb(0,255,0)";
+						onColor = "rgb(0,0,255)";
 						break
 					case 3:
 						onRow = 1;
 						onColumn = 0;
-						onColor = "rgb(0,0,255)";
+						onColor = "rgb(255,0,0)";
 						break
 					case 4:
 						onRow = 1;
 						onColumn = 1;
-						onColor = "rgb(255,255,0)";
+						onColor = "rgb(0,255,0)";
 						break
 					default:
 						document.write("oops")
@@ -297,22 +297,22 @@
 				case 1:
 					onRow = 0;
 					onColumn = 0;
-					onColor = "rgb(255,0,0)";
+					onColor = "rgb(255,255,0)";
 					break
 				case 2:
 					onRow = 0;
 					onColumn = 1;
-					onColor = "rgb(0,255,0)";
+					onColor = "rgb(0,0,255)";
 					break
 				case 3:
 					onRow = 1;
 					onColumn = 0;
-					onColor = "rgb(0,0,255)";
+					onColor = "rgb(255,0,0)";
 					break
 				case 4:
 					onRow = 1;
 					onColumn = 1;
-					onColor = "rgb(255,255,0)";
+					onColor = "rgb(0,255,0)";
 					break
 				default:
 					document.write("oops")
@@ -327,7 +327,7 @@
 			}
 			else {
 				if (j > 0) {
-					alert("Sorry, try again!");
+					alert("Shucks. Click Start to try again!");
 					window.location.reload();
 				}
 				else {
