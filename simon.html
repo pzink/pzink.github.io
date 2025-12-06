@@ -1,23 +1,205 @@
-<!doctype html>
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html>
+	<head>
+		<title>Peter A. Zink</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="robots" content="noindex, nofollow" />
+		<meta name="googlebot" content="noindex, nofollow" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
 
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="chrome=1">
-	<meta name="robots" content="noindex, nofollow">
-	<meta name="googlebot" content="noindex, nofollow">
-	<title>Peter A. Zink</title>
+		<!-- Wrapper -->
+			<div id="wrapper">
 
-	<link rel="stylesheet" href="stylesheets/styles.css">
-	<link rel="stylesheet" href="stylesheets/pygment_trac.css">
-	<meta name="viewport" content="width=device-width">
-	<!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-	<meta http-equiv="Content-Language" content="en-us">
-	<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-	<title>Sort of Simon</title>
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
 
+							<!-- Header -->
+								<header id="header">
+									<a href="index.html" class="logo"><strong>Peter A. Zink,</strong> PhD</a>
+									<!--ul class="icons">
+										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+										<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+										<li><a href="#" class="icon brands fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
+										<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+										<li><a href="#" class="icon brands fa-medium-m"><span class="label">Medium</span></a></li>
+									</ul-->
+								</header>
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+														<h2>Simon Says...</h2>
+			<form>
+				<button id="startButton" onclick="javascript:firstSquare();">Start</button>
+				<br />
+				<blockquote>Round #: <input readonly type="text" name="round" size="2" style="width:2.5em;"><br>
+				
+				<input type="hidden" id="info" size="1" /></blockquote>
+			</form>
+									</header>
+			<!--
+  The 2x2 table below represents the Simon pad grid.
+  Each cell is a clickable pad, wired via onMouseDown to yourTurn(n).
+  Cell IDs (cell1..cell4) and table ID (table1) are referenced in game logic.
+-->
+	<style>
+		.simon-table-wrapper {
+			width: 100%;
+			max-width: 500px;
+			aspect-ratio: 1 / 1;
+			margin: 0 auto;
+			position: relative;
+		}
+		.simon-table {
+			width: 100%;
+			height: 100%;
+			border-collapse: collapse;
+			table-layout: fixed;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+		}
+		.simon-table td {
+			border: 4px solid black;
+			border-radius: 25px;
+			width: 50%;
+			height: 50%;
+			padding: 0;
+		}
+		@media (max-width: 600px) {
+			.simon-table-wrapper {
+				max-width: 90vw;
+			}
+		}
+	</style>
+			<div class="simon-table-wrapper">
+			  <table class="simon-table" id="table1">
+				  <tr>
+					  <td id="cell1" onMouseDown="javascript:yourTurn(1)">&nbsp;</td>
+					  <td id="cell2" onMouseDown="javascript:yourTurn(2)">&nbsp;</td>
+				  </tr>
+				  <tr>
+					  <td id="cell3" onMouseDown="javascript:yourTurn(3)">&nbsp;</td>
+					  <td id="cell4" onMouseDown="javascript:yourTurn(4)">&nbsp;</td>
+				  </tr>
+			  </table>
+			</div>
+		<footer>
+			<p><br>Click the squares in the same order that "Simon" does. Each round adds an additional square and an incremental increase in speed.</p>
+		</footer>
+		</section>
+
+						</div>
+					</div>
+
+				<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+
+							<!-- Search -->
+								<section id="search" class="alt">
+									<form method="post" action="#">
+										<input type="text" name="query" id="query" placeholder="Search" />
+									</form>
+								</section>
+
+							<!-- Menu -->
+								<nav id="menu">
+  <header class="major">
+    <h2>Menu</h2>
+  </header>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li>
+	<span class="opener">Visualization Services</span>
+	<ul>
+		<li><a href="consult.html">Overview</a></li>
+		<li><a href="v-construct.html">Construction</a></li>
+		<li><a href="v-furniture.html">Furniture</a></li>
+		<li><a href="v-legal.html">Legal</a></li>
+		<li><a href="v-prototypes.html">Prototypes</a></li>
+	</ul>
+</li>
+    <li>
+      <span class="opener">Skills</span>
+      <ul>
+        <li><a href="p-i40.html">Industry 4.0</a></li>
+        <li><a href="p-emsys.html">Electro-Mechanical Systems</a></li>
+        <li><a href="p-cad.html">Computer-Aided Design</a></li>
+        <li><a href="p-eprop.html">Electrical Propulsion</a></li>
+        <li><a href="p-wood.html">Woodwork</a></li>
+      </ul>
+    </li>
+    <li>
+      <span class="opener">Academics</span>
+      <ul>
+        <li><a href="teaching.html">Teaching</a></li>
+        <li><a href="advising.html">Advising</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+							<!-- Section -->
+								<section>
+									<header class="major">
+										<h2>Notes</h2>
+									</header>
+									<div class="mini-posts">
+										<article>
+											<p><br><small><a href="https://github.com/pzink/JavaScript-Simon">"Sort of Simon" -- JavaScript</a> written by Peter A. Zink.</p>
+										</article>
+										<article>
+											<p>Based on <a href="https://en.wikipedia.org/wiki/Simon_(game)">the classic Milton-Bradley game</a></p>
+										</article>
+										<article>
+											<p>Uses the Central Randomizer 1.3 (C) 1997 by Paul Houle.</p>
+										</article>
+									</div>
+								</section>
+
+							<!-- Section -->
+								<!--section>
+									<header class="major">
+										<h2>Get in touch</h2>
+									</header>
+									<p>Sed varius enim lorem ullamcorper dolore aliquam aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin sed aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+									<ul class="contact">
+										<li class="icon solid fa-envelope"><a href="#">information@untitled.tld</a></li>
+										<li class="icon solid fa-phone">(000) 000-0000</li>
+										<li class="icon solid fa-home">1234 Somewhere Road #8254<br />
+										Nashville, TN 00000-0000</li>
+									</ul>
+								</section-->
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; Peter A. Zink, https://pzink.com.<br>Licensed for non-commercial use under <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">Creative Commons BY-NC 4.0</a>.<br>Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
 	<script language="javascript" type="text/javascript">
 
 		var cellOrder = new Array(99);
@@ -187,61 +369,5 @@
 		// end central randomizer.
 
 	</script>
-
-	<style>
-		table,
-		th,
-		td {
-			border: 4px solid black;
-			border-radius: 25px;
-		}
-	</style>
-
-</head>
-
-<body>
-	<div class="wrapper">
-		<header>
-			<ul>
-				<li class="full-width"><a href="index.html"><strong>Home</strong></a></li>
-			</ul>
-				<h2>Simon Says...</h2>
-			<form>
-				<button id="startButton" onclick="javascript:firstSquare();"
-					style="display:block; width:220px; height:64px; font-size:20px; padding:12px 16px; margin:8px 0;">Start</button>
-				<br />
-				<blockquote>Round #: <input readonly type="text" name="round" size="5"><br><br>
-				<p>Click the squares in the same order that "Simon" does. Each round adds an additional square and
-					an incremental increase in speed.</p>
-				<input type="hidden" id="info" size="40" /></blockquote>
-			</form>
-		</header>
-		<section>
-			<!--
-  The 2x2 table below represents the Simon pad grid.
-  Each cell is a clickable pad, wired via onMouseDown to yourTurn(n).
-  Cell IDs (cell1..cell4) and table ID (table1) are referenced in game logic.
--->
-
-			<table width="500" cellspacing="0" cellpadding="0" style="border-collapse: collapse" height="500"
-				id="table1">
-				<tr>
-					<td width="250" id="cell1" onMouseDown="javascript:yourTurn(1)">&nbsp;</td>
-					<td width="250" id="cell2" onMouseDown="javascript:yourTurn(2)">&nbsp;</td>
-				</tr>
-				<tr>
-					<td width="250" id="cell3" onMouseDown="javascript:yourTurn(3)">&nbsp;</td>
-					<td width="250" id="cell4" onMouseDown="javascript:yourTurn(4)">&nbsp;</td>
-				</tr>
-			</table>
-		<footer>
-			<p><small>"Sort of Simon" -- JavaScript written by Peter A. Zink in 2001. (<a
-					href="http://pzink.com">pzink.com</a>)<br />
-				Based on <a href="https://en.wikipedia.org/wiki/Simon_(game)">the classic Milton-Bradley
-					game</a><br />
-				Uses the Central Randomizer 1.3 (C) 1997 by Paul Houle</small></p>
-		</footer>
-		</section>
-</body>
-
+	</body>
 </html>
