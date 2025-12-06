@@ -43,148 +43,81 @@
           <header class="main">
             <h1>Marine Electrical Propulsion</h1>
           </header>
-          <p>Last winter the 50-year-old engine on my sailboat seized, and I replaced the propulsion system with a 10 kW
-            electric motor. This page contains some of what I've learned from these experiences and others, and details
-            of that conversion.
-          </p>
-
-          <h2>1974 Sabre 28, "Mandy"</h2>
-          <p>
-            In 2024, my 1974 Sabre 28 sailboat had an auxiliary engine&mdash;a 1975 vintage 30hp Atomic Four gasoline
-            engine.</p>
-          <p>The Atomic Four was raw water cooled, which meant that the inside had been exposed to a lot of salt. As a
-            relatively new
-            user of this engine, I didn't know that it wasn't meant to run in idle. When this engine idles (which I did
-            sometimes for long periods while sailing and fishing) the raw, salt cooling water, which combines with the
-            exhaust in the exhaust manifold, can accumulate in the exhaust pipe and then can flow back into the pistons
-            and valves when the engine is shut off, especially if the water hadn't been blown out by revving it before
-            shutdown.
-          </p>
           <div class="row gtr-200">
             <div class="col-6 col-12-medium">
-              <span class="image fit"><img src="images/mandy-electrification/mandy-electrification.1.png"
-                  alt="1974, Sabre 28"></span>
+              <h2>1974 Sabre 28, "Mandy"</h2>
+              <p>Last winter the 50-year-old engine on my sailboat seized, and I replaced the propulsion system with a 10 kW electric motor. This page contains some of what I've learned from these experiences and others, and details of that conversion.</p>
+              <p>In 2024, my 1974 Sabre 28 sailboat had an auxiliary engine—a 1975 vintage 30hp Atomic Four gasoline engine.</p>
+              <p>The Atomic Four was raw water cooled, which meant that the inside had been exposed to a lot of salt. As a relatively new user of this engine, I didn't know that it wasn't meant to run in idle. When this engine idles (which I did sometimes for long periods while sailing and fishing) the raw, salt cooling water, which combines with the exhaust in the exhaust manifold, can accumulate in the exhaust pipe and then can flow back into the pistons and valves when the engine is shut off, especially if the water hadn't been blown out by revving it before shutdown.</p>
             </div>
             <div class="col-6 col-12-medium">
-              <span class="image fit"><img src="images/mandy-electrification/mandy-electrification.2.png"
-                  alt="atomic four engine with the head removed"></span>
+              <span class="image fit"><img src="images/mandy-electrification/mandy-electrification.1.png" alt="1974, Sabre 28"></span>
+              <span class="image fit"><img src="images/mandy-electrification/mandy-electrification.2.png" alt="atomic four engine with the head removed"></span>
             </div>
           </div>
           <div class="row gtr-200">
-
-            <p>Unfortunately, I rarely revved it up before shutting it off to blow out the water, and it seized
-              that summer. It was so rusted in the first two pistons and related valves and that one of the exhaust
-              valve stems broke off when I was trying to free it; it was rusted about 60% of the way through, so I think
-              this happened in the past as well. After looking at my options and their costs, I decided to replace it
-              with
-              an electric system using a kit from <a
-                href="https://www.thunderstruck-ev.com/electric-sailboat-kits-and-accessories/"
-                target="_blank">ThunderStruck Motors</a>.</p>
-
-            <div class="row gtr-200">
-              <div class="col-6 col-12-medium">
-                <span class="image fit"><img src="images/mandy-electrification/mandy-electrification.2a.png"
-                    alt="thunderStruck Motors 10 kW electric sailboat kit"></span>
-              </div>
-              <div class="col-6 col-12-medium">
-                <h4>ThunderStruck Motors 10kW Sailboat Kit&mdash;Key Notes:</h4>
-                <ul>
-                  <li>"...often used to replace 30hp combustion engines!"</li>
-                  <li>Battery requirements: cell chemistry, amp hour rating, overall pack voltage, series cell count and
-                    arrangement</li>
-                  <li>"What batteries should you use? Most customers are happy with sealed, deep cycle lead acid...Use 4
-                    in
-                    series to get 48v, with a 100 Amp Hour capacity minimum. Larger capacity will give a longer run
-                    time."
-                  </li>
-                </ul>
-                <p>I decided to use lithium iron polymer (LFP) batteries instead of lead acid, but otherwise followed
-                  their
-                  advice.</p>
-              </div>
+            <div class="col-6 col-12-medium">
+              <p>Unfortunately, I rarely revved it up before shutting it off to blow out the water, and it seized that summer. It was so rusted in the first two pistons and related valves that one of the exhaust valve stems broke off when I was trying to free it; it was rusted about 60% of the way through, so I think this happened in the past as well. After looking at my options and their costs, I decided to replace it with an electric system using a kit from <a href="https://www.thunderstruck-ev.com/electric-sailboat-kits-and-accessories/" target="_blank">ThunderStruck Motors</a>.</p>
             </div>
-            <div class="row gtr-200">
-              <hr class="major" />
-
+            <div class="col-6 col-12-medium">
+              <span class="image fit"><img src="images/mandy-electrification/mandy-electrification.2a.png" alt="thunderStruck Motors 10 kW electric sailboat kit"></span>
+            </div>
+          </div>
+          <div class="row gtr-200">
+            <div class="col-6 col-12-medium">
               <h2>Design & Calculations</h2>
-              <p>I used half speed calculations and an <a href="https://www.eboatcalculator.com" target="_blank">free
-                  calculator/spreadsheet</a> to determine how long a 200 amp hour battery
-                pack at nominal 48V would last, given the specs of the ThunderStruck motor and the size of my boat:</p>
-
-              <img src="images/mandy-electrification/mandy-electrification.3.png" alt="System wiring diagram"
-                class="project-image">
-
+              <p>I used half speed calculations and an <a href="https://www.eboatcalculator.com" target="_blank">free calculator/spreadsheet</a> to determine how long a 200 amp hour battery pack at nominal 48V would last, given the specs of the ThunderStruck motor and the size of my boat:</p>
               <ul>
                 <li>Calculator suggested ~4 hours at cruising speed of 4.5 knots (28ft boat hull speed is 6.4 kts)</li>
-                <li>Charge time for 10 kilowatt hour system (200Ah * ~50V): With 640W and 8 hours of effective sunlight
-                  per
-                  day, full charge in less than three days</li>
+                <li>Charge time for 10 kilowatt hour system (200Ah * ~50V): With 640W and 8 hours of effective sunlight per day, full charge in less than three days</li>
                 <li>Most usage: brief motor operation for mooring/slip operations</li>
               </ul>
-
+            </div>
+            <div class="col-6 col-12-medium">
+              <span class="image fit"><img src="images/mandy-electrification/mandy-electrification.3.png" alt="System wiring diagram"></span>
+            </div>
+          </div>
+          <div class="row gtr-200">
+            <div class="col-6 col-12-medium">
               <h3>3D Modeling & Design</h3>
               <p>In the winter of 2024, I used the Onshape app with a device with LIDAR to scan the hull:</p>
-              <img src="images/mandy-electrification/mandy-electrification.4.png" alt="3D surface model of the hull"
-                class="project-image">
-
-              <p>I used the scan and original drawings from practicalsailor.com with help from a friend to create a
-                simple,
-                but accurate surface model of the hull:</p>
-              <img src="images/mandy-electrification/mandy-electrification.4a.png" alt="3D surface model of the hull"
-                class="project-image">
-
-              <p>I used that model and the drawings to model the bulkhead surfaces for supporting the propulsion system
-                and
-                electronics:</p>
-              <img src="images/mandy-electrification/mandy-electrification.4b.png" alt="Bulkhead surface models"
-                class="project-image">
-
+              <p>I used the scan and original drawings from practicalsailor.com with help from a friend to create a simple, but accurate surface model of the hull:</p>
+              <p>I used that model and the drawings to model the bulkhead surfaces for supporting the propulsion system and electronics:</p>
               <p>Components modeled in-context:</p>
-              <img src="images/mandy-electrification/mandy-electrification.5.png" alt="Components modeled in context"
-                class="project-image">
-
-              <p>Having estimates of required wire length from the bill of materials and planning wire routing
-                beforehand
-                saved significant time. Even with all that forethought, the 12V system, and networking wiring still
-                needs
-                work to clean up.</p>
-
+              <p>Having estimates of required wire length from the bill of materials and planning wire routing beforehand saved significant time. Even with all that forethought, the 12V system, and networking wiring still needs work to clean up.</p>
+            </div>
+            <div class="col-6 col-12-medium">
+              <span class="image fit"><img src="images/mandy-electrification/mandy-electrification.4.png" alt="3D surface model of the hull"></span>
+              <span class="image fit"><img src="images/mandy-electrification/mandy-electrification.4a.png" alt="3D surface model of the hull"></span>
+              <span class="image fit"><img src="images/mandy-electrification/mandy-electrification.4b.png" alt="Bulkhead surface models"></span>
+              <span class="image fit"><img src="images/mandy-electrification/mandy-electrification.5.png" alt="Components modeled in context"></span>
+            </div>
+          </div>
+          <div class="row gtr-200">
+            <div class="col-6 col-12-medium">
               <h3>Solar Panel Installation</h3>
-              <p>I designed a stainless steel structure to attach to the existing push pit railing and an 8020 frame to
-                support the solar panels:</p>
-              <img src="images/mandy-electrification/mandy-electrification.6.png"
-                alt="Solar panel support structure design" class="project-image">
-
-              <p>and performed FEA with Onshape to explore different configurations and ensure structural integrity
-                under
-                vertical and shear loads.</p>
-
+              <p>I designed a stainless steel structure to attach to the existing push pit railing and an 8020 frame to support the solar panels:</p>
+              <p>and performed FEA with Onshape to explore different configurations and ensure structural integrity under vertical and shear loads.</p>
               <p>Using my boom as a crane, the panels went on easily:</p>
-              <img src="images/mandy-electrification/mandy-electrification.7.png" alt="Solar panel installation"
-                class="project-image">
-
+            </div>
+            <div class="col-6 col-12-medium">
+              <span class="image fit"><img src="images/mandy-electrification/mandy-electrification.6.png" alt="Solar panel support structure design"></span>
+              <span class="image fit"><img src="images/mandy-electrification/mandy-electrification.7.png" alt="Solar panel installation"></span>
+            </div>
+          </div>
+          <div class="row gtr-200">
+            <div class="col-6 col-12-medium">
               <h3>Electronics & Monitoring</h3>
-              <img src="images/mandy-electrification/mandy-electrification.8.png" alt="Electronics monitoring system"
-                class="project-image">
-
-              <p>The remote monitoring capability has made it enjoyable to track charging and battery state even when
-                not
-                sailing.</p>
-
-              <img src="images/p-eprop/vrm-data.webp" alt="Electronics monitoring system" class="project-image">
-
+              <p>The remote monitoring capability has made it enjoyable to track charging and battery state even when not sailing.</p>
               <h3>Lessons Learned</h3>
-              <p>One significant mistake was misreading the cruising RPM that the old gasoline engine produced at the
-                propeller shaft. I designed the current system to have an RPM of about 1/2 of that (around 1350 rpm).
-                Rather
-                than removing the 2:1 reducer, I'm considering a larger propeller to avoid increased cavitation risk at
-                higher RPMs.</p>
-
-
-              <hr class="major" />
-
-
-        </section>
+              <p>One significant mistake was misreading the cruising RPM that the old gasoline engine produced at the propeller shaft. I designed the current system to have an RPM of about 1/2 of that (around 1350 rpm). Rather than removing the 2:1 reducer, I'm considering a larger propeller to avoid increased cavitation risk at higher RPMs.</p>
+            </div>
+            <div class="col-6 col-12-medium">
+              <span class="image fit"><img src="images/mandy-electrification/mandy-electrification.8.png" alt="Electronics monitoring system"></span>
+              <span class="image fit"><img src="images/p-eprop/vrm-data.webp" alt="Electronics monitoring system"></span>
+            </div>
+          </div>
+          <hr class="major" />
 
       </div>
     </div>
