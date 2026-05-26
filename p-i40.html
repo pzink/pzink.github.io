@@ -1,0 +1,260 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+	<title>Peter A. Zink</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<meta name="robots" content="noindex, nofollow" />
+	<meta name="googlebot" content="noindex, nofollow" />
+</head>
+
+<body class="is-preload">
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Main -->
+		<div id="main">
+			<div class="inner">
+
+				<!-- Header -->
+				<header id="header">
+					<a href="index.html" class="logo"><strong>Peter A. Zink,</strong> PhD</a>
+				</header>
+
+				<!-- Content -->
+				<section>
+					<header class="main">
+						<h1>Industry 4.0 / Smart Manufacturing</h1>
+					</header>
+					<p>Over six years co-directing the education programs at <a href="ptc.com/education"
+							target="_blank">PTC</a>, I
+						worked with industry, government and academic thought leaders creating industrial and
+						educational systems
+						leveraging smart and interconnected "Industry 4.0" technologies and platforms. <br><br>
+						<span class="image left">
+							<video src="images/p-i40/welcome-to-the-purdue-polytechnic-smart-learning-factory.mp4" controls autoplay muted style="max-width:100%; height:auto;">
+								Your browser does not support the video tag.
+							</video>
+						</span>
+						Many of those projects involved using PTC's augmented reality platform, Vuforia, combined with
+						their Industrial Internet of Things (IIoT) platform, ThingWorx, to create real-time, bi-directional digital twins. We used a Universal Robotics UR3 and Allen-Bradley Programmable Logic Controllers (PLCs) and created demonstrations to help thought leading faculty understand how they could incorporate these tools into their classes.
+					</p>
+
+					<p>I've collaborated with and advised dozens of engineering faculty globally, exploring the
+						principles, concepts and technologies involved with smart manufacturing and Industry 4.0. One project I helped with is the Smart Factory at Purdue Polytechnic Institute.</p>
+
+
+					<p>Beginning in 2019, I worked closely with the Purdue Polytechnic Insistute faculty, technical staff and
+						administration to help them conceptualize, design and realize a <a
+							href="https://polytechnic.purdue.edu/experience-purdue-smart-manufacturing-labs" target="_blank">Smart
+							Learning Factory</a> for
+						their undergraduate students, introducing them to the concepts of digital engineering. I also
+						provided a framework
+						and outline for their <a
+							href="https://polytechnic.purdue.edu/degrees/smart-manufacturing-industrial-informatics" target="_blank">Smart
+							Manufacturing
+							curriculum</a>.</p>
+
+					<hr class="major" />
+
+					<h2>Onshape-based CAD Digital Twins</h2>
+					<p>
+						In order to help demonstrate to the global academic community how the PTC portfolio of tools could be leveraged in conjuntion with open-course platforms, we used a Universal Robotics UR3 collaborative robot to create an array of digital twins. Where possibly, we used open-source platforms like Python with Google Colab and Onshape to democratize and lower the cost to researchers.</p>
+					<div class="row gtr-200">
+						<div class="col-6 col-12-medium">
+							<span class="image fit"><img src="images/p-i40/UR3OnshapeDigitalTwin.gif"></span>
+						</div>
+						<div class="col-6 col-12-medium">
+							<span class="image fit"><img src="images/p-i40/i40-arch.webp" alt="" /></span>
+						</div>
+					</div>
+					<div class="row gtr-200">
+						<p><span class="image right"> <img src="images/p-i40/UR3-waypoints.webp"
+									alt="UR3 Waypoint Programming with Onshape">
+							</span>Using waypoints defined in an Onshape CAD document to
+							drive the motion of the robot.<br>The <a
+								href="https://cad.onshape.com/documents/f45fad4854ca95357c3937ee/w/947c0b3bc5c329a1c2960014/e/e13b8f1b2de53390ea9d2e34"
+								target="_blank">configurable Onshape document is public</a>, as is the <a
+								href="https://colab.research.google.com/github/PTC-Education/PTC-API-Playground/blob/main/UR3e_Onshape_Monitor_Digital_Twin_with_ThingWorx.ipynb#scrollTo=oMpN0V51Whw1"
+								target="_blank">Google Colab Python</a> to communicate with the robot, included in the
+							<a href="https://github.com/PTC-Education/PTC-API-Playground/blob/main/UR3e_Onshape_Monitor_Digital_Twin_with_ThingWorx.ipynb"
+								target="_blank">PTC Education API Playground</a>, developed by my team at PTC. </p>
+					</div>
+
+					<hr class="major" />
+					<h2>PLC controlled LEGO SPIKE Prime</h2>
+					<div class="row gtr-200">
+						
+						<p>This short video shows how we were using a Rockwell Automation Allen-Bradley PLC integrated
+							into a small, portable demonstration platform. I wrote ladder logic in the PLC to control the attached light array. Using a
+							prototype spatial computing platform, <a href="https://spatialtoolbox.vuforia.com"
+								target="_blank">Vuforia Spatial Toolbox</a>, I connected to the LEGO spike prime over
+							Bluetooth, and could control its motion using the parameters coming from the PLC. When the light was green the vehicle would run, for yellow it would run at half speed, and when red it would stop.</p>
+						<p><span class="image fit"><img src="images/p-i40/PLC-AR-short.webp"></span>
+							
+							<span class="image right"><img src="images/p-i40/PLC-CAD-dt.webp"></span>The camera pans out to show the view of an iPad, which was running a custom Augmented Reality (AR) experience at the
+							same time. In the
+							augmented reality experience, there is a AR stop light on a lamp post, which is also
+							connected to the data
+							from the PLC through thing works and updates in real time. The ThingWorx (IIoT) instance used in this
+							demonstration was hosted in the cloud, so the PLC is sending the state of the system to the
+							cloud, which is
+							then coming back to the iPad. When the light turns from yellow to red, you can see a small
+							delay between the
+							actual lights on the PLC demonstrator versus the AR traffic light due to that added
+							complexity.
+						<br><br>The left side of the screen shows Rockwell Automation's Emulate
+							3D, where we also
+							imported a 3-D model of the light post and we're able to animate it in real time as part of
+							their automation
+							software, and the right side of the screen shows a simple ThingWorx IIoT 'mashup' or dashboard,
+							with a 2D digital
+							twin of the traffic light.<br><br>The video at right shows the same I4.0 demonstrator and program running, but in this case,
+							the data is being
+							sent to Onshape to animate a CAD model in near-real-time. The demonstration leverages REST
+							API protocol, which
+							isn't meant for real time processing, and generally includes approximately a one second
+							delay.</p>
+						<p><span class="image left"><img src="images/p-i40/ur-ar.webp"></span>Both at BU and PTC, I bought and
+							used Universal Robots&mdash;a relatively low cost collaborative robotics platform. At PTC we used the UR3 to create several
+							demonstrations and examples of how to integrate with PTC technologies like augmented reality to help factory workers improve quality and productivity. <br>
+						I have done hundreds of hours of programming with <a href="https://www.universal-robots.com/" target="_blank">Universal Robots</a>, integrating them with other systems, including a 6th-axis linear slides, HAAS Mills, and a LabView-based control system.<br>
+						A view, we wanted to control our automated system without needing to have a person at every station to check and manually start or restart the machines after an error. By default, universal robotics require a human present to home the robot, but we needed to do it automatically, so I wrote a robot program that would do that safely. See it in action <a href="p-emsys.html">here</a>.</p>
+					</div>
+					<hr class="major" />
+					<h2>Universal Robot Mini-Digital Engineering Lab</h2>
+					<div class="row gtr-200">
+						
+						<p><span class="image right"> <img src="images/p-i40/robot-cart.webp"></span>One of the most useful
+							examples I created was a re-creation of a demonstration I first built at Boston University,
+							where
+							the robot rolls a die, a vision system locates the die, picks it up, counts the number on
+							the
+							top face and stores that in a database, then rolls the die again and again. AT PTC I built a
+							portable cart for the robot, which allowed us to move this demonstration to conference
+							rooms.
+							<br>
+							This was a great way to generate a large data set, end
+							of the results of the day could be used to trigger different events in a more complex
+							demonstration system.</p>
+
+					</div>
+					<hr class="major" />
+					<h2>LEGO for Manufacturing</h2>
+					<div class="row gtr-200">
+							<p><span class="image right"><img src="images/p-i40/plinko.webp"></span>Universal robots are easy to use, affordable and relatively safe. For even lower budget
+							solutions, I like to use LEGO as a way to apply some of the same principles.<br> 
+							<br>I also created a small
+							version of the classic "Let's Make a Deal" Plinko game, as a way to try to generate a large
+							data set with a repeatable
+							process with some variation. The LEGO elevator would drop the disc, which could fall into
+							either the left or
+							right channel, which was recorded and stored. An example of natural variation in a
+							manufacturing system.
+						</p>
+<p><span class="image left"><img src="images/p-i40/mfg-loop-legobot-cr.gif"></span>This LEGO robot is another simple example of a closed-loop manufacturing system with state-based control and a vision system.
+In creating any kind of manufacturing demonstration system, a challenge is to build it to be good enough to generate lots of data, and bad enough so that there is enough variation between operations to approximate the variation that exists in real-world manufacturing systems. </p>
+						
+					</div>
+
+				</section>
+
+			</div>
+		</div>
+
+		<!-- Sidebar -->
+		<div id="sidebar">
+			<div class="inner">
+
+				<!-- Menu -->
+				<nav id="menu">
+	<header class="major">
+		<h2>Menu</h2>
+	</header>
+	<ul>
+		<li><a href="index.html">Home</a></li>
+		<li><a href="about.html">About</a></li>
+		<li>
+			<span class="opener">Consulting Services</span>
+			<ul>
+				<li><a href="consult.html">Overview</a></li>
+				<li><a href="v-construct.html">Construction</a></li>
+				<li><a href="v-furniture.html">Furniture</a></li>
+				<li><a href="v-legal.html">Legal</a></li>
+				<li><a href="v-prototypes.html">Prototypes</a></li>
+			</ul>
+		</li>
+		<li>
+			<span class="opener">Skills</span>
+			<ul>
+				<li><a href="p-i40.html">Industry 4.0</a></li>
+				<li><a href="p-emsys.html">Electro-Mechanical Systems</a></li>
+				<li><a href="p-cad.html">Computer-Aided Design</a></li>
+				<li><a href="p-eprop.html">Electrical Propulsion</a></li>
+				<li><a href="p-wood.html">Woodwork</a></li>
+			</ul>
+		</li>
+		<li>
+			<span class="opener">Academics</span>
+			<ul>
+				<li><a href="teaching.html">Teaching</a></li>
+				<li><a href="advising.html">Advising</a></li>
+			</ul>
+		</li>
+	</ul>
+</nav>
+				<!-- Section -->
+				<section>
+					<header class="major">
+						<h2>Links</h2>
+					</header>
+					<div class="mini-posts">
+						<article>
+							<p>Read more about what Industry 4.0 is <a href="https://www.i40mc.de/en/">here</a>.</p>
+						</article>
+					</div>
+				</section>
+
+				<!-- Section -->
+				<section>
+					<header class="major">
+						<h2>Get in touch</h2>
+					</header>
+					<ul class="contact">
+						<li class="icon solid fa-envelope"><strong>Contact me</strong> on <a
+								href="https://www.linkedin.com/" target="_blank">LinkedIn</a></li>
+						<li class="icon solid fa-book">Academic Publications on <br><a
+								href="https://scholar.google.com/" target="_blank">Google
+								Scholar</a><br />
+						</li>
+					</ul>
+				</section>
+
+				<!-- Footer -->
+				<footer id="footer">
+					<p class="copyright">&copy; Peter A. Zink, https://pzink.com.<br>Licensed for non-commercial use under <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">Creative Commons BY-NC 4.0</a>.<br>Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+				</footer>
+
+			</div>
+		</div>
+		<!--End Sidebar-->
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
