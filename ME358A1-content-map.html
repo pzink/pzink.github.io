@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<script type="application/json" id="cowork-artifact-meta">
+{
+  "name": "Me358 Content Mindmap",
+  "schemaVersion": 1,
+  "description": "Editable mind map of ME358 lecture content — 4 phase groupings, 11 lectures, ~85 subtopics extracted from the F26 decks. Nodes are inline-editable with add/delete; collapse state and edits persist in localStorage. Exports as JSON or an indented outline."
+}
+</script>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ME358 Content Mind Map</title>
+<style>
+:root{
+  color-scheme: light;
+  --bg:#faf9f7; --ink:#1e1e1c; --muted:#6f6f68; --line:#dedcd5;
+  --p1:#8b5a2b; --p2:#2f6f8f; --p3:#7a4f9e; --p4:#4a7c4e; --root:#2b2b28;
+}
+*{box-sizing:border-box}
+body{min-height:600px}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font:14px/1.4 -apple-system,BlinkMacSystemFont,"SF Pro Text",Helvetica,Arial,sans-serif;padding:14px}
+h1{font-size:17px;margin:0 0 2px;letter-spacing:-.01em}
+.sub{color:var(--muted);font-size:12px;margin-bottom:10px}
+.bar{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:10px}
+button{border:1px solid var(--line);background:#fff;color:var(--muted);border-radius:6px;
+  padding:4px 9px;font-size:11.5px;cursor:pointer;font-family:inherit}
+button:hover{color:var(--ink);border-color:#c4c2b8}
+.sp{flex:1}
+.legend{display:flex;gap:12px;flex-wrap:wrap;font-size:11px;color:var(--muted);margin-bottom:8px}
+.legend i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:4px;vertical-align:-1px}
+#wrap{position:relative;overflow:auto;border:1px solid var(--line);border-radius:9px;background:#fff;padding:16px;
+  min-height:600px;resize:vertical}
+#stage{position:relative}
+#canvas{position:relative;transform-origin:0 0}
+svg{position:absolute;inset:0;pointer-events:none;overflow:visible}
+.node{position:absolute;border:1px solid var(--line);border-left-width:4px;border-radius:8px;
+  background:#fff;padding:9px 12px;box-shadow:0 1px 2px rgba(0,0,0,.05)}
+.node .lbl{outline:none;font-size:14px;white-space:normal;word-wrap:break-word}
+.node .lbl:focus{background:#fffbe8;border-radius:3px}
+.node.d0{background:var(--root);border-color:var(--root);color:#fff;font-weight:600}
+.node.d0 .lbl{font-size:18px;line-height:1.3}
+.node.d1{font-weight:600}
+.node.d1 .lbl{font-size:15.5px}
+.node.d2 .lbl{font-size:14.5px}
+.node.d3 .lbl{font-size:13.5px;color:#43433e}
+.ctl{position:absolute;top:-9px;right:-9px;display:none;gap:2px}
+.node:hover .ctl{display:flex}
+.ctl b{width:18px;height:18px;line-height:16px;text-align:center;font-size:12px;font-weight:400;
+  border:1px solid var(--line);border-radius:4px;background:#fff;color:#9a9a92;cursor:pointer}
+.ctl b:hover{color:var(--ink);border-color:#b5b3aa}
+.tog{position:absolute;right:-11px;top:50%;transform:translateY(-50%);
+  width:19px;height:19px;line-height:17px;text-align:center;font-size:10px;
+  border:1px solid var(--line);border-radius:50%;background:#fff;color:var(--muted);cursor:pointer;z-index:2}
+.tog:hover{color:var(--ink);border-color:#b5b3aa}
+.tog.has{font-weight:600}
+footer{margin-top:9px;color:var(--muted);font-size:11px}
+#toast{position:fixed;bottom:16px;left:50%;transform:translateX(-50%) translateY(50px);
+  background:var(--ink);color:#fff;padding:6px 13px;border-radius:6px;font-size:12px;
+  opacity:0;transition:all .2s;pointer-events:none;z-index:20}
+#toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+<h1>ME358 — Manufacturing Processes: Content Map</h1>
+<div class="sub">Click ▸ to expand · double-click any label to edit · hover a node for + (add child) and × (delete) · use &minus;/+ to zoom, then screenshot for slides</div>
+
+<div class="bar">
+  <button id="expand">Expand all</button>
+  <button id="lectures">Lectures only</button>
+  <button id="collapse">Collapse all</button>
+  <span class="sp"></span>
+  <button id="zout" title="Zoom out">&minus;</button>
+  <button id="zlvl" title="Reset to 100%" style="min-width:52px">100%</button>
+  <button id="zin" title="Zoom in">+</button>
+  <button id="md">Copy as outline</button>
+  <button id="json">Export JSON</button>
+  <button id="imp">Import JSON</button>
+  <button id="reset">Reset</button>
+</div>
+
+<div class="legend">
+  <span><i style="background:var(--p1)"></i>Materials &amp; metal processes</span>
+  <span><i style="background:var(--p2)"></i>Polymers</span>
+  <span><i style="background:var(--p3)"></i>Cutting &amp; additive</span>
+  <span><i style="background:var(--p4)"></i>Post-processing &amp; systems</span>
+</div>
+
+<div id="wrap"><div id="stage"><div id="canvas"><svg id="links"></svg></div></div></div>
+<footer id="foot"></footer>
+<div id="toast"></div>
+
+<script>
+const KEY="me358-mindmap-v2";
+let uid=0; const nid=()=>"n"+(++uid);
+
+function N(text,children,color){
+  return {id:nid(),text:text,color:color||null,collapsed:false,children:children||[]};
+}
+function DEFAULT(){
+  uid=0;
+  return N("ME358\nManufacturing Processes",[
+    N("Materials & Metal Processes",[
+      N("L1 · Intro and Metals",[
+        N("Course mechanics, grading, labs, expectations"),
+        N("What material properties does the product require?"),
+        N("Key properties for selecting materials"),
+        N("Materials overview → metals"),
+        N("What impacts the properties of a metal"),
+        N("Same alloy, different properties with different treatments"),
+        N("Carbon content and ductility"),
+        N("Carbon steel; 1XXX designations"),
+        N("Three ways of changing material properties"),
+        N("Material specification sheets"),
+        N("How materials react to forces and loads"),
+        N("Brittle vs. ductile"),
+        N("Formability — ease of plastic deformation"),
+        N("Properties of molten materials (casting preview)"),
+        N("Resources for materials (matweb)"),
+        N("Failure cases: De Havilland Comet, Liberty Ships")
+      ]),
+      N("L2 · Machining",[
+        N("Definitions"),
+        N("Capital equipment for machining"),
+        N("Machining as a secondary process"),
+        N("Types of equipment"),
+        N("Rarely one pass — roughing to finishing"),
+        N("Materials for machining"),
+        N("Material factors"),
+        N("How good should the surface be?"),
+        N("What equations matter"),
+        N("Key tradeoffs in machining"),
+        N("Width and depth of cut"),
+        N("Power — energy required to cut"),
+        N("Surface roughness in turning"),
+        N("DFM — no thin, deep holes"),
+        N("History of machining")
+      ]),
+      N("L3 · Forming",[
+        N("Classes of processes"),
+        N("Terms and forming characteristics"),
+        N("Material factors that define formability"),
+        N("Forging as a primary process"),
+        N("Sheet metal bending as a secondary process"),
+        N("Forging"),
+        N("Forging temperatures"),
+        N("Sheet metal bending — key concepts"),
+        N("Bend allowance"),
+        N("Sheet metal software and how it works"),
+        N("DFM rules")
+      ]),
+      N("L4 · Casting",[
+        N("Casting as a primary process"),
+        N("Permanent mold"),
+        N("Sand casting"),
+        N("Investment casting"),
+        N("Die casting"),
+        N("Benefits and challenges of each"),
+        N("Materials that work with casting"),
+        N("Material factors"),
+        N("Phase diagrams; what happens on cooling"),
+        N("Eutectic alloys; ferrous phase diagrams"),
+        N("Energy to cast; pouring temperature"),
+        N("Time to fill the cavity (down sprue)"),
+        N("Time to cool — Chvorinov's rule"),
+        N("DFM rules for casting"),
+        N("Defects")
+      ])
+    ],"var(--p1)"),
+    N("Polymers",[
+      N("L5 · Plastics",[
+        N("Key properties for selecting materials"),
+        N("Resources for materials"),
+        N("Materials overview"),
+        N("Forms of ABS"),
+        N("Not just \"plastic\" — POM example"),
+        N("Plastics and elastomers"),
+        N("Three characteristics that impact manufacturing"),
+        N("Plastic types: thermoplastic, thermoset, elastomer"),
+        N("Thermoplastics — crystalline vs. amorphous"),
+        N("Types of thermoplastics"),
+        N("Five most popular thermoplastics"),
+        N("Application example: shell and liner"),
+        N("Additives to plastics"),
+        N("BPA"),
+        N("Recycling symbols"),
+        N("Recycling of plastics in practice"),
+        N("Materials we aren't covering")
+      ]),
+      N("L6 · Plastic Mfg Processes",[
+        N("Classes of plastics processes"),
+        N("Blow molding"),
+        N("Rotational molding"),
+        N("Plastic processes as primary processes"),
+        N("Most plastic processes require a mold"),
+        N("Injection molding"),
+        N("Applications: snap-fits, internal structures"),
+        N("History of injection molding"),
+        N("Injection molding equipment"),
+        N("DFM rules"),
+        N("Runner sizing"),
+        N("Materials that work with injection molding"),
+        N("Material factors"),
+        N("Injection molding defects"),
+        N("Mold flow analysis"),
+        N("Machine sizes (5–4000 tons)"),
+        N("Part costs"),
+        N("Time to run the press"),
+        N("Press tonnage drives machine cost"),
+        N("Projected area and tonnage calculation"),
+        N("Ways to estimate costs")
+      ])
+    ],"var(--p2)"),
+    N("Cutting & Additive",[
+      N("L7 · Non-Traditional Machining & Cutting",[
+        N("Classes of processes"),
+        N("The \"off-cut\""),
+        N("Common shearing processes"),
+        N("Mechanical types of cutting"),
+        N("Thermal and chemical cutting (laser, waterjet)"),
+        N("Cutting flat stock as a primary process"),
+        N("History"),
+        N("Material properties matter for the process"),
+        N("Tools depend on material and process"),
+        N("How to select the appropriate process"),
+        N("Punch force and press tonnage — F = 0.7·t·L·UTS"),
+        N("Electrochemical machining"),
+        N("Wire EDM — speed of cut"),
+        N("DFM rules and defects")
+      ]),
+      N("L8 · Additive Manufacturing",[
+        N("Why 3D printing"),
+        N("Myths"),
+        N("Major players: Stratasys, EOS, Z Corp, 3D Systems"),
+        N("Powder-based processes"),
+        N("Build chamber"),
+        N("Selective laser melting (SLM) — what it's used for"),
+        N("SLM: heat transfer and phase transitions"),
+        N("Layer height"),
+        N("How bonding occurs"),
+        N("Design for manufacturing — FDM"),
+        N("Resin (SLA)"),
+        N("What materials can be 3D printed"),
+        N("Design process"),
+        N("Post-processing"),
+        N("Where 3D printing fits in the design process"),
+        N("Resources")
+      ])
+    ],"var(--p3)"),
+    N("Post-Processing & Systems",[
+      N("L9 · Secondary Processes",[
+        N("Why treatment and finishing processes"),
+        N("Finishing sits later in the process"),
+        N("Terms"),
+        N("Enameling"),
+        N("Heat treatments"),
+        N("Case hardening and applications"),
+        N("Mass finishing"),
+        N("Work hardening"),
+        N("Electroplating and anodizing"),
+        N("Painting"),
+        N("Decorative finishes"),
+        N("Finishing considerations"),
+        N("Nitriding vs. carburizing")
+      ]),
+      N("L10 · Joining and Assembly",[
+        N("Fastening — overview"),
+        N("Fusion welding"),
+        N("MIG vs. TIG arc welding"),
+        N("What matters in welding"),
+        N("Energy to create a weld"),
+        N("Spot resistance welding"),
+        N("Seam welding"),
+        N("Tradeoffs"),
+        N("Welding defects"),
+        N("Bolt vs. screw"),
+        N("Types of holes"),
+        N("Screw standards"),
+        N("Adhesives, incl. UV-cured"),
+        N("Critical aspects of adhesives"),
+        N("Integral connectors"),
+        N("Live hinges")
+      ]),
+      N("L11 · Manufacturing Systems",[
+        N("Manufacturing systems — overview"),
+        N("Decisions that need to be made"),
+        N("System architectures (Chase & Jacobs)"),
+        N("Project"),
+        N("Work center / job shop"),
+        N("Manufacturing cells"),
+        N("Assembly line"),
+        N("Continuous processes"),
+        N("What manufacturing engineers measure"),
+        N("Fundamental guidelines for manufacturing"),
+        N("Cost to produce a part"),
+        N("What drives material costs"),
+        N("Make vs. buy; vertical integration"),
+        N("Supply chain challenges")
+      ])
+    ],"var(--p4)")
+  ]);
+}
+
+let root;
+function load(){
+  try{
+    const s=localStorage.getItem(KEY);
+    if(s){ root=JSON.parse(s); uid=0; reseed(root); return; }
+  }catch(e){}
+  root=DEFAULT();
+  root.children.forEach(c=>c.children.forEach(l=>l.collapsed=true));
+}
+function reseed(n){ const m=/^n(\d+)$/.exec(n.id||""); if(m) uid=Math.max(uid,+m[1]);
+  (n.children||[]).forEach(reseed); }
+function save(){ try{localStorage.setItem(KEY,JSON.stringify(root))}catch(e){} }
+
+function toast(m){const t=document.getElementById("toast");t.textContent=m;t.classList.add("on");
+  clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove("on"),1400);}
+function copy(txt,msg){
+  const ok=()=>toast(msg);
+  if(navigator.clipboard&&navigator.clipboard.writeText)
+    navigator.clipboard.writeText(txt).then(ok,()=>fb(txt,ok)); else fb(txt,ok);
+}
+function fb(t,cb){const a=document.createElement("textarea");a.value=t;a.style.position="fixed";
+  a.style.opacity="0";document.body.appendChild(a);a.select();
+  try{document.execCommand("copy");cb()}catch(e){toast("Copy failed")}document.body.removeChild(a);}
+
+const COLW=[0,300,660,1080], WID=[250,300,370,410];
+const canvas=document.getElementById("canvas"), svg=document.getElementById("links"),
+      stage=document.getElementById("stage");
+
+const ZKEY="me358-mindmap-zoom";
+let Z=parseFloat(localStorage.getItem(ZKEY)||"1")||1;
+function applyZoom(w,h){
+  canvas.style.transform="scale("+Z+")";
+  stage.style.width=Math.ceil(w*Z)+"px";
+  stage.style.height=Math.ceil(h*Z)+"px";
+  document.getElementById("zlvl").textContent=Math.round(Z*100)+"%";
+}
+function setZoom(z){
+  Z=Math.min(2.5,Math.max(0.4,Math.round(z*20)/20));
+  try{localStorage.setItem(ZKEY,String(Z))}catch(e){}
+  render();
+}
+document.getElementById("zin").onclick=()=>setZoom(Z+0.1);
+document.getElementById("zout").onclick=()=>setZoom(Z-0.1);
+document.getElementById("zlvl").onclick=()=>setZoom(1);
+
+function walk(n,d,cb,parent){ cb(n,d,parent);
+  if(!n.collapsed) (n.children||[]).forEach(c=>walk(c,d+1,cb,n)); }
+
+function render(){
+  [...canvas.querySelectorAll(".node")].forEach(e=>e.remove());
+  svg.innerHTML="";
+  const items=[];
+  walk(root,0,(n,d,p)=>items.push({n,d,p}));
+
+  const map=new Map();
+  items.forEach(it=>{
+    const el=document.createElement("div");
+    const color=inherited(it.n);
+    el.className="node d"+it.d;
+    el.style.width=WID[Math.min(it.d,3)]+"px";
+    el.style.left=COLW[Math.min(it.d,3)]+"px";
+    if(it.d>0) el.style.borderLeftColor=color;
+    const kids=(it.n.children||[]).length;
+    el.innerHTML='<div class="lbl" spellcheck="false"></div>'+
+      '<div class="ctl"><b class="add" title="Add child">+</b>'+(it.d?'<b class="del" title="Delete">×</b>':'')+'</div>'+
+      (kids?'<div class="tog has">'+(it.n.collapsed?'▸':'▾')+'</div>':'');
+    const lbl=el.querySelector(".lbl");
+    lbl.textContent=it.n.text;
+    lbl.addEventListener("dblclick",()=>{lbl.contentEditable="true";lbl.focus();
+      document.execCommand&&document.getSelection().selectAllChildren(lbl);});
+    lbl.addEventListener("blur",()=>{lbl.contentEditable="false";
+      const v=lbl.textContent.trim(); if(v&&v!==it.n.text){it.n.text=v;save();} else lbl.textContent=it.n.text;});
+    lbl.addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();lbl.blur();}
+      if(e.key==="Escape"){lbl.textContent=it.n.text;lbl.blur();}});
+    el.querySelector(".add").onclick=()=>{ (it.n.children=it.n.children||[]).push(N("New topic"));
+      it.n.collapsed=false; save(); render(); };
+    const del=el.querySelector(".del");
+    if(del) del.onclick=()=>{ if(!confirm("Delete \""+it.n.text+"\" and everything under it?"))return;
+      it.p.children=it.p.children.filter(c=>c!==it.n); save(); render(); };
+    const tg=el.querySelector(".tog");
+    if(tg) tg.onclick=()=>{ it.n.collapsed=!it.n.collapsed; save(); render(); };
+    canvas.appendChild(el);
+    map.set(it.n,{el,d:it.d,n:it.n});
+  });
+
+  // measure, then position
+  let cur=0; const VG=9;
+  function place(n){
+    const m=map.get(n); if(!m) return 0;
+    m.h=m.el.offsetHeight;
+    const kids=n.collapsed?[]:(n.children||[]);
+    if(!kids.length){ m.y=cur+m.h/2; cur+=m.h+VG; return m.y; }
+    const ys=kids.map(place);
+    m.y=(ys[0]+ys[ys.length-1])/2;
+    return m.y;
+  }
+  place(root);
+  map.forEach(m=>{ m.el.style.top=(m.y-m.h/2)+"px"; });
+
+  let maxX=0;
+  map.forEach(m=>{ maxX=Math.max(maxX, COLW[Math.min(m.d,3)]+WID[Math.min(m.d,3)]); });
+  const CW=maxX+24, CH=cur+12;
+  canvas.style.height=CH+"px"; canvas.style.width=CW+"px";
+  applyZoom(CW,CH);
+
+  const ns="http://www.w3.org/2000/svg";
+  map.forEach((m,n)=>{
+    if(n.collapsed) return;
+    (n.children||[]).forEach(c=>{
+      const cm=map.get(c); if(!cm) return;
+      const x1=COLW[Math.min(m.d,3)]+WID[Math.min(m.d,3)], y1=m.y;
+      const x2=COLW[Math.min(cm.d,3)], y2=cm.y, mx=(x1+x2)/2;
+      const p=document.createElementNS(ns,"path");
+      p.setAttribute("d",`M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`);
+      p.setAttribute("fill","none");
+      p.setAttribute("stroke",inherited(c)||"#c9c7bf");
+      p.setAttribute("stroke-width","1.6");
+      p.setAttribute("opacity","0.55");
+      svg.appendChild(p);
+    });
+  });
+
+  let tot=0; (function cnt(n){tot++;(n.children||[]).forEach(cnt)})(root);
+  document.getElementById("foot").textContent=
+    tot+" nodes · "+items.length+" visible · "+Math.round(CW)+"×"+Math.round(CH)+" px at 100% · changes save automatically";
+}
+
+function inherited(n){
+  let found=null;
+  (function f(node,c){ const col=node.color||c;
+    if(node===n){found=col;return;} (node.children||[]).forEach(k=>f(k,col)); })(root,null);
+  return found;
+}
+
+function setAll(v,depth){
+  (function f(n,d){ if((n.children||[]).length) n.collapsed = depth==null ? v : d>=depth;
+    (n.children||[]).forEach(c=>f(c,d+1)); })(root,0);
+  save(); render();
+}
+document.getElementById("expand").onclick=()=>setAll(false);
+document.getElementById("collapse").onclick=()=>setAll(true,1);
+document.getElementById("lectures").onclick=()=>setAll(null,2);
+document.getElementById("md").onclick=()=>{
+  const out=[];
+  (function f(n,d){ out.push("  ".repeat(d)+"- "+n.text.replace(/\n/g," — "));
+    (n.children||[]).forEach(c=>f(c,d+1)); })(root,0);
+  copy(out.join("\n"),"Outline copied");
+};
+document.getElementById("json").onclick=()=>copy(JSON.stringify(root,null,2),"JSON copied");
+document.getElementById("imp").onclick=()=>{
+  const s=prompt("Paste previously exported JSON:");
+  if(!s) return;
+  try{ const o=JSON.parse(s); if(!o.text) throw 0; root=o; uid=0; reseed(root); save(); render(); toast("Imported"); }
+  catch(e){ toast("That wasn't valid map JSON"); }
+};
+document.getElementById("reset").onclick=()=>{
+  if(!confirm("Discard your edits and restore the original map?")) return;
+  root=DEFAULT(); root.children.forEach(c=>c.children.forEach(l=>l.collapsed=true));
+  save(); render();
+};
+
+load(); render();
+</script>
+</body>
+</html>
